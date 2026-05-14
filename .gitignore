@@ -1,0 +1,22 @@
+# OS junk
+.DS_Store
+Thumbs.db
+~$*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case dev tooling is added later)
+node_modules/
+npm-debug.log*
+
+# Local secrets
+.env
+.env.local
+*.local
+
+# Claude Code workspace (keep launch.json so MCP preview still works)
+.claude/settings.local.json

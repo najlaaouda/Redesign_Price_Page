@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأسعار — أكاديميات | ابدأ أكاديميتك بـ $1 لأول شهر</title>
+  <meta name="description"
+    content="جرّب أكاديميات مجاناً 3 أيام، ادفع $1 للشهر الكامل. باقات مرنة للمدربين والمستشارين وصُنّاع المحتوى." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- IBM Plex Sans Arabic — fallback closest in style to 29LT Bukra -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- Saudi Riyal Symbol Font — official SAMA 2024 mark (U+20C1) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@emran-alhaddad/saudi-riyal-font/index.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6B3A8C',
+            'primary-hover': '#5A2F77',
+            'primary-soft': '#F4EDF8',
+            secondary: '#E056A7',
+            'secondary-soft': '#FDF0F7',
+            heading: '#311A40',
+            'text-muted': '#7C7282',
+            border: '#DFDCE0',
+            warning: '#F2C94C',
+            success: '#1F8A4C',
+            error: '#D23030',
+            info: '#1565C0',
+          },
+          fontFamily: {
+            sans: ['"29LT Bukra"', '"IBM Plex Sans Arabic"', 'system-ui', 'sans-serif'],
+          },
+          fontSize: {
+            'h1': ['32px', { lineHeight: '1.25', fontWeight: '700' }],
+            'h2': ['24px', { lineHeight: '1.35', fontWeight: '500' }],
+            'h3': ['20px', { lineHeight: '1.4', fontWeight: '400' }],
+            'h4': ['16px', { lineHeight: '1.5', fontWeight: '400' }],
+            'h5': ['14px', { lineHeight: '1.5', fontWeight: '400' }],
+          },
+          maxWidth: {
+            'container': '1200px',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Lottie / confetti for the thank-you modal celebration -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="font-sans bg-white text-heading antialiased">
+
+  <!-- ═══════════ SVG SYMBOLS (used via <use>) ═══════════ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Academiyat logo mark — graduation cap inspired -->
+      <symbol id="acad-logo-mark" viewBox="0 0 32 32">
+        <path d="M16 4 L30 12 L16 20 L2 12 Z" fill="currentColor" />
+        <path d="M6 14.5 L6 21 Q 6 26 16 26 Q 26 26 26 21 L 26 14.5" fill="none" stroke="currentColor"
+          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />
+        <circle cx="29" cy="13" r="1.5" fill="currentColor" />
+        <path d="M29 13 L 29 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ═══════════ Top Nav (floating, transparent) ═══════════ -->
+  <header class="absolute top-0 left-0 right-0 z-40">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+      <!-- Brand (right in RTL) -->
+      <a href="/" class="flex items-center gap-2.5 group flex-shrink-0">
+        <span
+          class="brand-logo w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shadow-sm transition">
+          <svg class="w-5 h-5" aria-hidden="true">
+            <use href="#acad-logo-mark" />
+          </svg>
+        </span>
+        <span class="font-semibold text-heading text-[17px] tracking-tight">أكاديميات</span>
+      </a>
+
+      <!-- Centered pill nav -->
+      <nav
+        class="nav-pill hidden lg:flex items-center gap-1 bg-white/70 backdrop-blur border border-border/70 rounded-full px-2 py-1.5 shadow-sm">
+        <a href="#" class="nav-link flex items-center gap-1 px-4 py-1.5 text-h5 text-heading rounded-full transition">
+          المنصة
+          <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+        <a href="#"
+          class="nav-link px-4 py-1.5 text-h5 text-heading font-medium rounded-full transition bg-primary-soft">الأسعار</a>
+        <a href="#compare"
+          class="nav-link flex items-center gap-1 px-4 py-1.5 text-h5 text-heading rounded-full transition">
+          مجتمع أكاديميات
+
+        </a>
+      </nav>
+
+      <!-- Actions (left in RTL) -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button type="button" data-plan="advanced" data-signup-trigger
+          class="inline-flex items-center bg-primary text-white text-h4 font-medium px-5 py-2.5 rounded-full shadow-sm btn-premium btn-magnetic">
+          ابدأ تجربتك المجانية
+        </button>
+        <button type="button" data-login-trigger
+          class="hidden sm:inline-flex items-center text-h4 font-medium text-heading px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-border/70 hover:bg-white shadow-sm btn-premium">
+          دخول
+        </button>
+
+
+        <!-- Mobile menu toggle -->
+        <button type="button" id="mobile-menu-toggle"
+          class="lg:hidden w-10 h-10 rounded-full bg-white/70 backdrop-blur border border-border/70 flex items-center justify-center text-heading shadow-sm"
+          aria-label="القائمة" aria-expanded="false">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-white">
+      <nav class="max-w-container mx-auto px-4 py-4 flex flex-col gap-1">
+        <a href="#" class="px-4 py-3 text-h4 text-heading rounded-xl hover:bg-primary-soft transition">الحلول</a>
+        <a href="#" class="px-4 py-3 text-h4 text-heading font-medium rounded-xl bg-primary-soft">الأسعار</a>
+        <a href="#" class="px-4 py-3 text-h4 text-heading rounded-xl hover:bg-primary-soft transition">مجتمع
+          أكاديميات</a>
+        <button type="button" data-login-trigger
+          class="sm:hidden px-4 py-3 text-h4 text-heading rounded-xl hover:bg-primary-soft transition border-t border-border mt-2 pt-4 text-right">تسجيل الدخول</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════════ Hero + Pricing shared backdrop wrapper ═══════════ -->
+  <div class="hero-pricing-wrap relative isolate overflow-hidden bg-white">
+
+    <!-- Infinite Grid backdrop — single scrolling layer + soft pink accent -->
+    <div id="hero-grid-wrap" class="hero-bg" aria-hidden="true">
+      <!-- Single grid that scrolls infinitely; vertical mask fades it out
+           by the middle of the pricing blocks (see .hero-bg in CSS) -->
+      <svg class="grid-layer grid-layer--base" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid-pattern-base" width="40" height="40" patternUnits="userSpaceOnUse" x="0" y="0">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(107, 58, 140, 0.75)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-pattern-base)"/>
+      </svg>
+
+    </div>
+
+  <!-- ═══════════ 1. HERO ═══════════ -->
+  <section class="hero-section relative pt-40 sm:pt-48 lg:pt-56 pb-4 sm:pb-6 lg:pb-8">
+
+    <div class="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- Earnings badge — +$250K, black text + icon, light gray pill -->
+      <div class="inline-flex items-center gap-2 bg-[#F5F4F6] rounded-full px-4 py-2 mb-6 text-h5 font-semibold text-heading">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M3 17l6-6 4 4 8-8"/>
+          <path d="M14 7h7v7"/>
+        </svg>
+        <span><span dir="ltr">+$250K</span> إيرادات عملاؤنا</span>
+      </div>
+
+      <!-- Two-line headline with elegant Arabic kashida; gradient on "$1 لأول شهر" -->
+      <h1 class="text-[22px] sm:text-[36px] lg:text-[52px] font-bold text-heading leading-[1.4] tracking-tight max-w-3xl mx-auto">
+        <span class="block">ابدأ تجربــتــك مجــــانًا، ثم ادفــــــــع</span>
+        <span class="block"><span class="popular-text-gradient"><span dir="ltr">$1</span> لأول شهر</span> مع كامل الميـــــــــزات</span>
+      </h1>
+
+   </div>
+  </section>
+
+  <!-- ═══════════ 2. TOGGLES BAR ═══════════ -->
+  <section class="relative z-20 pt-4 pb-3 sm:pt-6 sm:pb-4">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-4">
+
+        
+        <!-- Billing pill toggle (far right in RTL) -->
+        <div class="relative">
+          <div class="inline-flex bg-[#F9F7FB] rounded-full p-1" role="tablist" aria-label="دورة الفوترة">
+            <button type="button" data-billing="monthly"
+              class="billing-toggle px-5 py-2 text-h5 font-medium rounded-full text-text-muted transition"
+              role="tab" aria-selected="false">شهري</button>
+            <button type="button" data-billing="yearly"
+              class="billing-toggle px-5 py-2 text-h5 font-medium rounded-full bg-white text-heading shadow-sm transition"
+              role="tab" aria-selected="true">سنوي</button>
+          </div>
+
+          <!-- Hand-drawn annotation: text on visual RIGHT (top), curved arrow sweeps DOWN-LEFT to point at سنوي below (matches reference image). -->
+          <div class="annotation pointer-events-none absolute bottom-full left-10 mb-1 flex items-start gap-1 select-none">
+            <span class="annotation-text text-heading text-h5 font-bold whitespace-nowrap pt-1">وفّر 20%</span>
+            <svg class="w-14 h-14 text-heading" viewBox="0 0 64 64" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <!-- Top-right → bottom-left, tip pointing DOWN at سنوي -->
+              <path d="M 58 8 C 54 22, 46 34, 34 42 C 24 48, 16 52, 8 56" />
+              <!-- Arrowhead at (8, 56) — prongs go back up-right along the path -->
+              <path d="M 8 56 L 17 55" />
+              <path d="M 8 56 L 12 48" />
+            </svg>
+          </div>
+        </div>
+        <!-- Currency dropdown (far left in RTL) -->
+        <div class="relative" id="currency-wrapper">
+          <button type="button" id="currency-trigger"
+            class="inline-flex items-center gap-2 bg-[#F9F7FB] hover:bg-[#F1ECF4] text-text-muted text-h5 font-medium px-4 py-2 rounded-full transition"
+            aria-haspopup="listbox" aria-expanded="false" aria-label="اختيار العملة">
+            <span id="currency-trigger-label">USD&nbsp;$</span>
+            <svg class="w-3.5 h-3.5 opacity-60 transition-transform" id="currency-trigger-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <ul id="currency-menu"
+            class="hidden absolute z-20 mt-2 min-w-[140px] bg-white border border-[#F1ECF4] rounded-2xl shadow-[0_8px_24px_-8px_rgba(49,26,64,0.12)] p-1 right-0"
+            role="listbox" aria-label="العملة">
+            <li>
+              <button type="button" data-currency="USD"
+                class="currency-toggle w-full text-right px-3 py-2 text-h5 text-heading rounded-xl hover:bg-[#F9F7FB] transition flex items-center justify-between"
+                role="option" aria-selected="true">
+                <span>USD&nbsp;$</span>
+                <svg class="check-icon w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-currency="SAR"
+                class="currency-toggle w-full text-right px-3 py-2 text-h5 text-heading rounded-xl hover:bg-[#F9F7FB] transition flex items-center justify-between"
+                role="option" aria-selected="false">
+                <span>SAR <span class="sar-icon icon-saudi_riyal_new" aria-label="ريال سعودي"></span></span>
+                <svg class="check-icon w-4 h-4 text-primary hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 3. PRICING CARDS ═══════════ -->
+  <section id="pricing-cards" class="relative z-10 pt-2 pb-12 sm:pt-3 sm:pb-14 lg:pb-16">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Loading skeleton (hidden by default, JS shows on initial load) -->
+      <div id="pricing-skeleton" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <!-- Empty / error state -->
+      <div id="pricing-empty" class="hidden text-center py-16">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-soft text-primary mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <h3 class="text-h2 text-heading mb-2">تعذّر تحميل الباقات</h3>
+        <p class="text-h4 text-text-muted mb-4">حدث خطأ مؤقت — حاول مجدداً.</p>
+        <button onclick="window.location.reload()"
+          class="bg-primary hover:bg-primary-hover text-white text-h5 font-medium px-5 py-2.5 rounded-lg transition">إعادة
+          المحاولة</button>
+      </div>
+
+      <!-- Pricing grid: 2 separate blocks (Notion-style) -->
+      <div id="pricing-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
+
+        <!-- ─── BLOCK 1: الانطلاقة + الاحترافية (shared container) ─── -->
+        <div class="lg:col-span-2 bg-white border border-[#F1ECF4] rounded-3xl overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 items-stretch">
+
+            <!-- CARD 1: الانطلاقة -->
+            <article class="pricing-card p-7 lg:p-8 flex flex-col h-full border-b md:border-b-0 md:border-e border-[#F1ECF4]">
+              <header class="mb-4">
+                <h3 class="text-h2 font-semibold text-heading">الانطلاقة</h3>
+              </header>
+
+              <div class="mb-4">
+                <div class="flex items-baseline gap-2 mb-2.5">
+                  <span class="text-[44px] font-bold text-heading leading-none price-amount" data-monthly-usd="29"
+                    data-yearly-usd="23" data-monthly-sar="109" data-yearly-sar="86">$23</span>
+                  <span class="text-h4 text-heading price-period">شهريًا</span>
+                </div>
+                <span class="price-note inline-block bg-[#F9F7FB] text-heading text-h5 font-medium px-3.5 py-1.5 rounded-full">$276 تدفع سنويًا</span>
+              </div>
+
+              <button type="button" data-plan="starter" data-signup-trigger
+                class="btn-premium btn-alt block w-full text-center text-h4 font-medium py-3 rounded-xl mb-5">
+                ابدأ تجربتك المجانية
+              </button>
+
+              <ul class="space-y-3 text-h5 text-heading flex-1">
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>دورة تدريبية واحدة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>جلسة استشارة واحدة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>منتج رقمي واحد</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>حتى 500 مشترك</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>رفع 20 فيديو</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>5 جيجابايت تخزين</li>
+              </ul>
+            </article>
+
+            <!-- CARD 2: الاحترافية -->
+            <article class="pricing-card p-7 lg:p-8 flex flex-col h-full">
+              <header class="mb-4">
+                <h3 class="text-h2 font-semibold text-heading">الاحترافية</h3>
+              </header>
+
+              <div class="mb-4">
+                <div class="flex items-baseline gap-2 mb-2.5">
+                  <span class="text-[44px] font-bold text-heading leading-none price-amount" data-monthly-usd="39"
+                    data-yearly-usd="29" data-monthly-sar="146" data-yearly-sar="109">$29</span>
+                  <span class="text-h4 text-heading price-period">شهريًا</span>
+                </div>
+                <span class="price-note inline-block bg-[#F9F7FB] text-heading text-h5 font-medium px-3.5 py-1.5 rounded-full">$348 تدفع سنويًا</span>
+              </div>
+
+              <button type="button" data-plan="pro" data-signup-trigger
+                class="btn-premium btn-alt block w-full text-center text-h4 font-medium py-3 rounded-xl mb-5">
+                ابدأ تجربتك المجانية
+              </button>
+
+              <ul class="space-y-3 text-h5 text-heading flex-1">
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>5 دورات منشورة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>10 جلسات منشورة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>منتجات رقمية غير محدودة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>حتى 2,000 مشترك</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>3 باقات منشورة</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>فيديوهات بلا حدود</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>100 جيجابايت تخزين</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>بث مباشر للدورات</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>حساب مدير واحد</li>
+                <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>دومين مخصّص</li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ─── BLOCK 2: المتقدمة (separate, featured) ─── -->
+        <article class="pricing-card pricing-card--featured p-7 lg:p-8 flex flex-col bg-[#F1ECF4] rounded-3xl">
+          <header class="mb-4 flex items-center gap-2.5 flex-wrap">
+            <h3 class="text-h2 font-semibold text-heading">المتقدمة</h3>
+            <span class="inline-flex items-center text-h5 font-bold bg-[#F9F7FB] rounded-full px-4 py-1.5">
+              <span class="popular-text-gradient">الأكثر طلباً</span>
+            </span>
+          </header>
+
+          <div class="mb-4">
+            <div class="flex items-baseline gap-2 mb-2.5">
+              <span class="text-[44px] font-bold text-heading leading-none price-amount" data-monthly-usd="129"
+                data-yearly-usd="99" data-monthly-sar="484" data-yearly-sar="371">$99</span>
+              <span class="text-h4 text-heading price-period">شهريًا</span>
+            </div>
+            <span class="price-note inline-block bg-white text-heading text-h5 font-medium px-3.5 py-1.5 rounded-full">$1,188 تدفع سنويًا</span>
+          </div>
+
+          <button type="button" data-plan="advanced" data-signup-trigger
+            class="btn-premium block w-full text-center bg-primary text-white text-h4 font-medium py-3 rounded-xl mb-5">
+            ابدأ تجربتك المجانية
+          </button>
+
+          <ul class="space-y-3 text-h5 text-heading flex-1">
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>دورات وباقات غير محدودة</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>جلسات غير محدودة</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>منتجات رقمية غير محدودة</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>مشتروكون بالنشرة بلا حدود</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>فيديوهات بلا حدود</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>تخزين غير محدود</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>دورات مباشرة</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>حسابان كمدير</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>5 حسابات مشرفين</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>دومين مخصّص</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>تكامل Zapier</li>
+            <li class="flex items-start gap-2.5"><svg class="w-[18px] h-[18px] text-heading/80 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>ربط بوابات الدفع (تاب، تمارا، Stripe، PayPal، Paymob)</li>
+          </ul>
+        </article>
+
+      </div>
+
+     
+    </div>
+  </section>
+
+  </div><!-- /.hero-pricing-wrap (shared constellation backdrop) -->
+
+  <!-- ═══════════ 4. FEATURE COMPARISON TABLE ═══════════ -->
+  <section id="compare" class="pt-2 pb-12 lg:pb-16 bg-white">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div id="compare-table-wrapper">
+
+        <!-- (A) Plan column header — heading on the right (RTL start), name + price + CTA per plan -->
+        <div class="compare-sticky-header" role="presentation">
+          <div class="compare-sticky-row">
+            <div class="compare-sticky-cell compare-sticky-cell--label">
+              <h2 class="compare-section-heading">مقارنة الخطــــط</h2>
+            </div>
+
+            <div class="compare-sticky-cell" data-plan-col="starter">
+              <h4 class="compare-plan-name">الانطلاقة</h4>
+              <div class="compare-plan-price">
+                <span data-plan-price="starter">$276</span>
+                <span class="compare-plan-period" data-plan-period>/ سنويًا</span>
+              </div>
+              <button type="button" data-plan="starter" data-signup-trigger
+                class="compare-plan-cta compare-plan-cta--alt">ابدأ تجربتك المجانية</button>
+            </div>
+
+            <div class="compare-sticky-cell" data-plan-col="pro">
+              <h4 class="compare-plan-name">الاحترافية</h4>
+              <div class="compare-plan-price">
+                <span data-plan-price="pro">$348</span>
+                <span class="compare-plan-period" data-plan-period>/ سنويًا</span>
+              </div>
+              <button type="button" data-plan="pro" data-signup-trigger
+                class="compare-plan-cta compare-plan-cta--alt">ابدأ تجربتك المجانية</button>
+            </div>
+
+            <div class="compare-sticky-cell" data-plan-col="advanced">
+              <h4 class="compare-plan-name">المتقدمة</h4>
+              <div class="compare-plan-price">
+                <span data-plan-price="advanced">$1,188</span>
+                <span class="compare-plan-period" data-plan-period>/ سنويًا</span>
+              </div>
+              <button type="button" data-plan="advanced" data-signup-trigger
+                class="compare-plan-cta compare-plan-cta--primary">ابدأ تجربتك المجانية</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- (B) Pill category tabs (sticks below the header) -->
+        <div class="compare-tabs-wrap">
+          <div class="compare-tabs" role="tablist">
+            <button type="button" role="tab" data-tab="fees"      class="compare-tab is-active" aria-selected="true">رسوم وعمولات</button>
+            <button type="button" role="tab" data-tab="content"   class="compare-tab" aria-selected="false">المحتوى</button>
+            <button type="button" role="tab" data-tab="accounts"  class="compare-tab" aria-selected="false">الحسابات</button>
+            <button type="button" role="tab" data-tab="platform"  class="compare-tab" aria-selected="false">مميزات المنصة</button>
+            <button type="button" role="tab" data-tab="training"  class="compare-tab" aria-selected="false">التدريب التفاعلي</button>
+            <button type="button" role="tab" data-tab="marketing" class="compare-tab" aria-selected="false">التسويق والمبيعات</button>
+            <button type="button" role="tab" data-tab="payment"   class="compare-tab" aria-selected="false">بوابة الدفع</button>
+          </div>
+        </div>
+
+        <!-- (C) The comparison table itself -->
+        <div class="compare-table-scroll">
+          <table class="compare-table" id="compare-table">
+            <colgroup>
+              <col class="compare-col compare-col--label">
+              <col class="compare-col">
+              <col class="compare-col">
+              <col class="compare-col">
+            </colgroup>
+
+            <!-- === المحتوى === -->
+            <tbody data-category="content" hidden>
+              <tr><th scope="row">دورات تدريبية منشورة</th><td>1</td><td>5</td><td>غير محدود</td></tr>
+              <tr><th scope="row">جلسات استشارات / إرشاد شخصي منشورة</th><td>1</td><td>10</td><td>غير محدود</td></tr>
+              <tr><th scope="row">منتجات رقمية</th><td>1</td><td>غير محدود</td><td>غير محدود</td></tr>
+              <tr><th scope="row">باقات / مسارات</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td>3</td><td>غير محدود</td></tr>
+              <tr><th scope="row">رفع فيديوهات</th><td>20 فيديو</td><td>غير محدود</td><td>غير محدود</td></tr>
+              <tr><th scope="row">مساحة التخزين</th><td>5GB</td><td>100GB</td><td>غير محدود</td></tr>
+              <tr><th scope="row">مرفقات الدورات التدريبية</th><td>غير محدود</td><td>غير محدود</td><td>غير محدود</td></tr>
+              <tr><th scope="row">محتويات المنتج الرقمي</th><td>غير محدود</td><td>غير محدود</td><td>غير محدود</td></tr>
+              <tr><th scope="row">دورات البث المباشر</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تحميل جميع أنواع الملفات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تصنيف المنتجات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">بنك خاص بالملفات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+            </tbody>
+
+            <!-- === الحسابات === -->
+            <tbody data-category="accounts" hidden>
+              <tr><th scope="row">حسابات متدربين</th><td>غير محدود</td><td>غير محدود</td><td>غير محدود</td></tr>
+              <tr><th scope="row">حساب مالك</th><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">حساب مدير</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td>2</td></tr>
+              <tr><th scope="row">حساب مشرف</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td>1</td><td>5</td></tr>
+            </tbody>
+
+            <!-- === مميزات المنصة === -->
+            <tbody data-category="platform" hidden>
+              <tr><th scope="row">تصميم الشهادة</th><td>1 تصميم</td><td>3 تصاميم</td><td>3 تصاميم</td></tr>
+              <tr><th scope="row">شهادة إتمام الدورة</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تعديل شروط إتمام الدورة</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">التحكم في ألوان المنصة</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تصاميم جاهزة للمنصة</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تصميمات جاهزة لصفحة المنتجات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">التوافق مع محركات البحث (SEO)</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">نظام إدارة محتوى (CMS)</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">نظام إشعارات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">التقارير</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">محادثة دعم فني فورية</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">مركز المساعدة / قاعدة المعرفة</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">نظام محادثة للاستشارات</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط مع Calendly</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">نطاق (دومين) فرعي مجاناً</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">نطاق (دومين) مخصص</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">إزالة شعار أكاديميات</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">إسناد دورات</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">مجتمع أكاديميات الخاص</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">إطلاق سريع للمنصة</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+            </tbody>
+
+            <!-- === التدريب التفاعلي === -->
+            <tbody data-category="training" hidden>
+              <tr><th scope="row">التعليقات على الدروس</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الأنشطة التفاعلية</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">اختبارات الإكمال</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+            </tbody>
+
+            <!-- === التسويق والمبيعات === -->
+            <tbody data-category="marketing" hidden>
+              <tr><th scope="row">صفحات الهبوط</th><td>3</td><td>10</td><td>غير محدود</td></tr>
+              <tr><th scope="row">شجرة الروابط</th><td>1</td><td>5</td><td>غير محدود</td></tr>
+              <tr><th scope="row">النشرة البريدية</th><td>500 مشترك</td><td>2,000 مشترك</td><td>غير محدود</td></tr>
+              <tr><th scope="row">التسويق بالبريد الإلكتروني</th><td>500 رسالة شهرياً</td><td>1,000 رسالة شهرياً</td><td>15,000 رسالة شهرياً</td></tr>
+              <tr><th scope="row">ربط مواقع التواصل الاجتماعي</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط مع Google Tag Manager</th><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">تصدير كوبونات الخصم</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط مع Zapier</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">كوبونات بنسبة 100%</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+            </tbody>
+
+            <!-- === بوابة الدفع === -->
+            <tbody data-category="payment" hidden>
+              <tr>
+                <th scope="row">
+                  بوابة دفع أكاديميات
+                  <button type="button" class="cmp-tip" aria-label="معلومات">
+                    <svg class="cmp-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                      <line x1="12" y1="11" x2="12" y2="16" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="cmp-tip__bubble">تكون مفعلة بشكل تلقائي للأكاديمية</span>
+                  </button>
+                </th>
+                <td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td><td class="cmp-v" aria-label="متوفر">✓</td>
+              </tr>
+              <tr><th scope="row">الربط الفوري مع Stripe</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط الفوري مع PayPal</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط الفوري مع Tamara</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط الفوري مع PayMob</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+              <tr><th scope="row">الربط الفوري مع Tap Company</th><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-x" aria-label="غير متوفر">✕</td><td class="cmp-v" aria-label="متوفر">✓</td></tr>
+            </tbody>
+
+            <!-- === رسوم وعمولات === -->
+            <tbody data-category="fees">
+              <tr>
+                <th scope="row">
+                  عمولة أكاديميات
+                  <button type="button" class="cmp-tip" aria-label="معلومات">
+                    <svg class="cmp-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                      <line x1="12" y1="11" x2="12" y2="16" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="cmp-tip__bubble">تطبق فقط على كل عملية بيع</span>
+                  </button>
+                </th>
+                <td>10% + $1</td><td>5% + $1</td><td>بدون عمولة</td>
+              </tr>
+              <tr>
+                <th scope="row">بطاقات Credit &amp; Debit Card Sales</th>
+                <td>3.9% + 30¢</td><td>3.9% + 30¢</td><td>3.9% + 30¢</td>
+              </tr>
+              <tr>
+                <th scope="row">رسوم تحويل</th>
+                <td>$15 + عمولة البنك الخاص بك</td>
+                <td>$15 + عمولة البنك الخاص بك</td>
+                <td>$15 + عمولة البنك الخاص بك</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  طلبات سحب الأرباح
+                  <button type="button" class="cmp-tip" aria-label="معلومات">
+                    <svg class="cmp-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                      <line x1="12" y1="11" x2="12" y2="16" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="cmp-tip__bubble">السحب الفوري متاح للمبالغ 200$ فأكثر</span>
+                  </button>
+                </th>
+                <td>فوري عند الطلب</td><td>فوري عند الطلب</td><td>فوري عند الطلب</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════ 6.5. TESTIMONIALS — heading + 3 stats + marquee carousel ═══════════ -->
+  <section id="testimonials" class="py-16 lg:py-20 overflow-hidden" style="background:#F3F1EC;">
+
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- (1) Section heading -->
+      <h2 class="text-center text-[28px] sm:text-[36px] text-heading font-bold leading-tight tracking-tight mb-10 lg:mb-12">
+        مئات المواقع بُنيت مع أكاديميـــــــــات
+      </h2>
+
+      <!-- (2) Three stats in a single row above the slider -->
+      <div class="flex flex-wrap items-start justify-center gap-x-10 sm:gap-x-16 lg:gap-x-24 gap-y-8 mb-14 lg:mb-16">
+        <div class="text-center">
+          <div class="text-[36px] sm:text-[42px] text-heading font-extrabold leading-none mb-3">
+            <span dir="ltr">+$<span class="count-up" data-count-to="250">0</span>K</span>
+          </div>
+          <div class="text-h4 text-text-muted">إيرادات عملاؤنا</div>
+        </div>
+        <div class="text-center">
+          <div class="text-[36px] sm:text-[42px] text-heading font-extrabold leading-none mb-3">
+            <span dir="ltr">+<span class="count-up" data-count-to="500">0</span></span>
+          </div>
+          <div class="text-h4 text-text-muted">أكاديمية مفعلة</div>
+        </div>
+        <div class="text-center">
+          <div class="text-[36px] sm:text-[42px] text-heading font-extrabold leading-none mb-3">
+            <span dir="ltr">+<span class="count-up" data-count-to="27">0</span></span>
+          </div>
+          <div class="text-h4 text-text-muted">نجم ومؤثر اختار أكاديميات</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- (3) Marquee — full-bleed below the stats -->
+    <div class="academy-marquee" dir="rtl">
+      <div class="academy-track" id="academy-track"></div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════ 7. FAQ — Dark theme with kashida ═══════════ -->
+  <section class="bg-heading text-white py-16 lg:py-20" id="faq">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-center text-[28px] sm:text-[36px] font-bold mb-12 tracking-tight">الأســـــــئلة الشــــــائعة</h2>
+
+      <div id="faq-list">
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">ما هي أكاديميـات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            أكاديميات منصّة سعودية متكاملة تساعد المدرّبين وصنّاع المحتوى والمستشارين على بناء أكاديمياتهم الرقمية، رفع دوراتهم، وبيع منتجاتهم لجمهور الخليج العربي.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">لمن أكاديميـات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            للمدرّبين، الخبراء، صنّاع المحتوى، المستشارين، والمؤسّسات التدريبية الذين يريدون قناة بيع رقمية كاملة بالعربية، بدون الحاجة لمطوّر أو متجر مستقل.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">ماذا أستطيع أن أبنيـه على أكاديميـات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            دورات تدريبية مباشرة ومسجّلة، جلسات استشارية، باقات تعليمية، منتجات رقمية قابلة للتنزيل، اشتراكات شهرية، وعضويات مجتمع — كلّها في موقع واحد بدومينك المخصّص.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">ما الذي يميّز أكاديميـات عن غيرها من المنصّـات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            مبنيّة بالكامل بالعربية وللسوق السعودي/الخليجي، فواتير متوافقة مع زاتكا، دفع عبر مدى وApple Pay وSTC Pay وتقسيط عبر تابي/تمارا، ودعم بالعربية على مدار الساعة.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">كيف تساعد أكاديميـات الخبـراء على تنمية أعمـالهم؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            من خلال أدوات تسويق مدمجة (صفحات هبوط، بريد إلكتروني، كوبونات)، تحليلات مفصّلة عن الجمهور، وأتمتة كاملة للتسجيل والدفع والشهادات — كلّ ما تحتاجه لتركّز على المحتوى فقط.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">هل أكاديميـات مناسبة لبيع المنتجـات الرقمية والاستشـارات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            نعم، تستطيع بيع كتب PDF، قوالب، جلسات أونلاين بحجز مواعيد، باقات استشارية، أو اشتراكات لمحتوى حصري — كلّ منتج له صفحة بيع جاهزة وروابط دفع آمنة.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">هل أكاديميـات جيدة للمبتدئين الذين يرغبون بالتوسّـع لاحقاً؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            تماماً — تبدأ بباقة الانطلاقة بدورة واحدة، وتتوسّع تدريجياً للاحترافية ثم المتقدّمة كلّما كبر جمهورك. كلّ بياناتك ومحتواك ينتقلون معك بدون إعادة بناء.
+          </div>
+        </details>
+
+        <details class="faq-item-dark border-b border-white/10">
+          <summary class="flex items-center justify-between py-5 cursor-pointer list-none gap-4">
+            <span class="text-h4 font-semibold">كيف أبدأ على أكاديميـات؟</span>
+            <svg class="faq-chev w-5 h-5 text-white/60 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="pb-5 text-h5 text-white/70 leading-relaxed">
+            اختر باقتك، جرّب المنصّة 3 أيام مجاناً بدون بطاقة بنكية، ثم فعّل اشتراكك بـ $1 لأول شهر. خدمة "نُجهّزها لك" متوفّرة لمن يريد فريقنا يبني له كلّ شيء خلال 5 أيام.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER — dark, full ═══════════ -->
+  <footer class="bg-heading text-white border-t border-white/10 pt-14 pb-10">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Top: logo+apps (start), 3 link cols, newsletter (end) -->
+      <div class="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
+
+        <!-- Logo + App-store buttons (RTL start = visual right) -->
+        <div class="col-span-2 md:col-span-3">
+          <a href="#" class="inline-flex items-center gap-2 mb-6">
+            <img src="assets/white logo.png" alt="أكاديميات" class="h-10 w-auto">
+          </a>
+          <div class="flex flex-col gap-2.5 w-[152px]">
+            <!-- App Store -->
+            <a href="#" aria-label="تنزيل من App Store" class="flex items-center gap-2 border border-white/60 rounded-xl px-4 py-2 hover:bg-white/10 transition">
+              <svg class="w-6 h-6 text-white shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <div class="leading-tight text-left">
+                <div class="text-[10px] text-white">تنزيل من</div>
+                <div class="text-[13px] font-semibold text-white">App Store</div>
+              </div>
+            </a>
+            <!-- Google Play (full color triangle from svgrepo) -->
+            <a href="#" aria-label="احصل عليه من Google Play" class="flex items-center gap-2 border border-white/60 rounded-xl px-4 py-2 hover:bg-white/10 transition">
+              <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 20.5V3.5c0-.5.3-.95.77-1.17l9.66 9.67-9.66 9.67c-.47-.22-.77-.67-.77-1.17z" fill="#00C3FF"/>
+                <path d="M17.42 8.85l3.79 2.18c.84.49.84 1.45 0 1.94l-3.79 2.18-3.49-3.15 3.49-3.15z" fill="#FFD500"/>
+                <path d="M4.27 2.33c.18-.08.4-.1.6-.05L17.42 8.85l-3.49 3.15L4.27 2.33z" fill="#00E676"/>
+                <path d="M4.27 21.67L13.93 12l3.49 3.15L4.87 21.72c-.2.05-.42.03-.6-.05z" fill="#FF3B30"/>
+              </svg>
+              <div class="leading-tight text-left">
+                <div class="text-[10px] text-white">احصل عليه من</div>
+                <div class="text-[13px] font-semibold text-white">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column: الخدمات -->
+        <div class="md:col-span-2">
+          <h4 class="text-h5 font-semibold mb-4 text-white">الخدمـات</h4>
+          <ul class="space-y-3 text-white/85 text-h5">
+            <li><a href="#" class="hover:text-white transition">دورات أونلاين</a></li>
+            <li><a href="#" class="hover:text-white transition">دورات مسجّلة</a></li>
+            <li><a href="#" class="hover:text-white transition">تقديم استشـارات</a></li>
+            <li><a href="#" class="hover:text-white transition">باقات</a></li>
+            <li><a href="#" class="hover:text-white transition">محتوى رقمي</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: الدعم -->
+        <div class="md:col-span-2">
+          <h4 class="text-h5 font-semibold mb-4 text-white">الدعـم</h4>
+          <ul class="space-y-3 text-white/85 text-h5">
+            <li><a href="#" class="hover:text-white transition">مركز المسـاعدة</a></li>
+            <li><a href="#" class="hover:text-white transition">الشروط والأحكام</a></li>
+            <li><a href="#" class="hover:text-white transition">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: مصادر أخرى -->
+        <div class="md:col-span-2">
+          <h4 class="text-h5 font-semibold mb-4 text-white">مصـادر أخرى</h4>
+          <ul class="space-y-3 text-white/85 text-h5">
+            <li><a href="#" class="hover:text-white transition">لماذا أكاديميـات؟</a></li>
+            <li><a href="#" class="hover:text-white transition">مجتمع أكاديميـات</a></li>
+            <li><a href="#" class="hover:text-white transition">المدونة</a></li>
+            <li><a href="#" class="hover:text-white transition">الأسعار</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter (RTL end = visual left) -->
+        <div class="col-span-2 md:col-span-3">
+          <h4 class="text-h5 font-semibold mb-2 text-white">النشرة البريدية</h4>
+          <p class="text-white/75 text-h5 mb-3 leading-relaxed">اشترك ليصلك كافة التحديثات أوّلاً بأوّل.</p>
+          <form class="flex gap-2 max-w-sm" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني"
+              class="flex-1 bg-white/5 border border-white/20 rounded-lg px-3 py-2.5 text-h5 text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition">
+            <button type="submit" class="bg-white text-heading font-semibold px-4 py-2.5 rounded-lg text-h5 hover:bg-white/90 transition">اشتراك</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Middle: socials -->
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="فيسبوك" class="footer-social">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.692V11.01h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+          </a>
+          <a href="#" aria-label="إنستغرام" class="footer-social">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="تويتر X" class="footer-social">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="لينكد إن" class="footer-social">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+          </a>
+          <a href="#" aria-label="ثريدز" class="footer-social">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.546 11.124a7.464 7.464 0 0 0-.282-.13c-.166-3.05-1.838-4.797-4.642-4.815h-.038c-1.676 0-3.07.716-3.928 2.018l1.542 1.057c.642-.973 1.65-1.18 2.387-1.18h.025c.918.005 1.612.272 2.063.793.328.379.547.901.654 1.561a13.34 13.34 0 0 0-2.717-.106c-2.661.153-4.373 1.703-4.258 3.857.058 1.092.602 2.03 1.535 2.642.788.518 1.803.77 2.857.713 1.393-.077 2.486-.609 3.249-1.582.58-.74.946-1.697 1.108-2.904.664.4 1.158.929 1.43 1.564.461 1.077.488 2.847-.956 4.288-1.265 1.263-2.787 1.81-5.084 1.827-2.548-.019-4.476-.834-5.732-2.422-1.176-1.488-1.784-3.638-1.806-6.39.022-2.752.63-4.901 1.806-6.39 1.256-1.588 3.184-2.402 5.732-2.421 2.566.019 4.527.838 5.83 2.434.64.783 1.122 1.768 1.45 2.92l1.776-.476c-.396-1.413-.984-2.61-1.766-3.587-1.638-2.046-3.992-3.075-7.097-3.097h-.012C9.916.022 7.62 1.075 5.793 3.07 4.169 4.852 3.322 7.32 3.3 11.46v.022l.001.018c.022 4.14.869 6.608 2.493 8.39 1.827 1.995 4.124 3.048 7.222 3.07h.013c2.756-.019 4.704-.745 6.308-2.354 2.099-2.107 2.038-4.74 1.345-6.358-.498-1.16-1.453-2.097-2.762-2.71l-.374-.156zM13.155 14.46c-1.215.069-2.475-.478-2.535-1.622-.045-.847.6-1.79 2.6-1.906l.302-.008c.733 0 1.418.07 2.04.205-.232 1.901-1.123 2.999-2.407 3.331z"/>
+            </svg>
+          </a>
+        </div>
+        <p class="text-white/70 text-h5">© 2026 أكاديميـات. جميع الحقوق محفوظة.</p>
+      </div>
+
+      <!-- Bottom legal -->
+      <div class="mt-6 text-center md:text-right">
+        <p class="text-white/65 text-h5 leading-relaxed">
+          مملوكة ومُدارة من قِبل شركة تكنولوجيا التعليم الإلكتروني ذ.م.م — البحرين. علامة تجارية مسجّلة لدى الهيئة السعودية للملكية الفكرية.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════ STICKY MOBILE BOTTOM CTA ═══════════ -->
+  <div id="mobile-bottom-cta"
+    class="fixed bottom-0 left-0 right-0 bg-white border-t border-border p-3 md:hidden z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] transform translate-y-full transition-transform">
+    <div class="flex items-center justify-between gap-3">
+      <div>
+        <div class="text-h5 text-text-muted">ابدأ بـ</div>
+        <div class="text-h3 font-bold text-heading">$1<span class="text-h5 text-text-muted font-normal">/شهر</span>
+        </div>
+      </div>
+      <a href="#pricing-cards"
+        class="btn-premium bg-primary text-white text-h5 font-medium px-5 py-3 rounded-xl flex-1 text-center">
+        ابدأ الآن
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════ SIGNUP MODAL — focused, single column ═══════════ -->
+  <div id="signup-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <!-- Backdrop -->
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-signup-close></div>
+
+    <!-- Scroll container -->
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+
+      <!-- Modal card -->
+      <div class="signup-modal__card relative w-full max-w-lg bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] p-7 sm:p-9">
+
+        <!-- Close button -->
+        <button type="button" data-signup-close aria-label="إغلاق"
+          class="absolute top-4 left-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-6 mt-2">
+          <img src="assets/logo 1.png" alt="أكاديميات" class="h-10 w-auto" />
+        </div>
+
+        <!-- Title -->
+        <h2 id="signup-title" class="text-center text-h3 font-semibold text-heading mb-7">
+          أنشئ حسابًا في ثوانٍ
+        </h2>
+
+        <!-- SSO buttons -->
+        <div class="space-y-2.5 mb-5">
+          <button type="button" class="signup-method w-full h-[52px] inline-flex items-center justify-center gap-2.5 bg-white border border-[#DFDCE0] hover:bg-[#F9F7FB] text-heading text-h4 font-medium px-4 rounded-xl transition">
+            <svg class="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+            المتابعة بحساب جوجل
+          </button>
+
+          <button type="button" class="signup-method w-full h-[52px] inline-flex items-center justify-center gap-2.5 bg-white border border-[#DFDCE0] hover:bg-[#F9F7FB] text-heading text-h4 font-medium px-4 rounded-xl transition">
+            <svg class="w-5 h-5" fill="#000000" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            المتابعة بحساب أبل
+          </button>
+        </div>
+
+        <!-- Divider with text -->
+        <div class="flex items-center gap-3 my-5" aria-hidden="true">
+          <span class="h-px flex-1 bg-[#E5E2E8]"></span>
+          <span class="text-[12px] text-text-muted whitespace-nowrap">أو متابعة التسجيل بالبريد الإلكتروني</span>
+          <span class="h-px flex-1 bg-[#E5E2E8]"></span>
+        </div>
+
+        <!-- Email field — floating label -->
+        <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl transition mb-3">
+          <input id="signup-email" type="email" placeholder=" "
+            class="peer w-full h-full bg-transparent text-h4 text-heading outline-none px-4 pt-5 pb-1.5" />
+          <label for="signup-email"
+            class="float-label absolute right-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none transition-all duration-150
+                   peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                   peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+            البريد الإلكتروني
+          </label>
+        </div>
+
+        <!-- Continue button -->
+        <button type="button" id="signup-continue-btn" disabled
+          class="signup-method w-full h-[52px] bg-primary hover:bg-primary-hover text-white text-h4 font-medium px-4 rounded-xl transition disabled:bg-[#DFDCE0] disabled:cursor-not-allowed">
+          متابعة التسجيل
+        </button>
+
+        <!-- Login link -->
+        <p class="text-center text-h5 mt-5">
+          <span class="text-text-muted">لدي حساب على أكاديميات؟</span>
+          <a href="#" data-login-trigger class="text-primary font-medium underline mr-1">تسجيل الدخول</a>
+        </p>
+
+        <!-- Terms microcopy -->
+        <p class="text-center text-[12px] text-text-muted mt-4 leading-relaxed">
+          بمتابعة التسجيل فأنت موافق على
+          <a href="#" class="text-primary underline">سياسة الخصوصية</a>
+          و
+          <a href="#" class="text-primary underline">شروط الاستخدام</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ LOGIN MODAL — Passkey-first ═══════════ -->
+  <div id="login-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-login-close></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+      <div class="signup-modal__card relative w-full max-w-lg bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] p-7 sm:p-9">
+
+        <!-- Close -->
+        <button type="button" data-login-close aria-label="إغلاق"
+          class="absolute top-4 left-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-6 mt-2">
+          <img src="assets/logo 1.png" alt="أكاديميات" class="h-10 w-auto" />
+        </div>
+
+        <!-- Title + Subtitle -->
+        <h2 id="login-title" class="text-center text-h3 font-semibold text-heading mb-1">
+          أهلًا بعودتك
+        </h2>
+        <p class="text-center text-h5 text-text-muted mb-7">سجّل دخولك للوصول لحسابك</p>
+
+        <!-- SSO row: Google + Apple + Passkey — icon on top, label below -->
+        <div class="grid grid-cols-3 gap-2.5 mb-5">
+          <!-- Google -->
+          <button type="button"
+            class="login-method flex flex-col items-center justify-center gap-2 bg-white border border-[#DFDCE0] hover:bg-[#F9F7FB] text-heading py-3.5 px-2 rounded-xl transition">
+            <svg class="w-6 h-6" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+            <span class="text-[12px] font-medium text-heading leading-none">الدخول بجوجل</span>
+          </button>
+
+          <!-- Apple -->
+          <button type="button"
+            class="login-method flex flex-col items-center justify-center gap-2 bg-white border border-[#DFDCE0] hover:bg-[#F9F7FB] py-3.5 px-2 rounded-xl transition">
+            <svg class="w-6 h-6" fill="#000000" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            <span class="text-[12px] font-medium text-heading leading-none">الدخول بحساب أبل</span>
+          </button>
+
+          <!-- Passkey -->
+          <button type="button" id="login-passkey-btn" data-supports-passkey="false"
+            class="login-method flex flex-col items-center justify-center gap-2 bg-white border border-[#DFDCE0] hover:bg-[#F9F7FB] text-heading py-3.5 px-2 rounded-xl transition">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="8" cy="11" r="3.2"/>
+              <path d="M11.2 11h9"/>
+              <path d="M16 11v3.2"/>
+              <path d="M18.5 11v2"/>
+              <path d="M8 5.5a5.5 5.5 0 0 0-3 1"/>
+              <path d="M11 5.6a5.5 5.5 0 0 1 1.6 1"/>
+            </svg>
+            <span class="text-[12px] font-medium text-heading leading-none">الدخول بـ Passkey</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-5" aria-hidden="true">
+          <span class="h-px flex-1 bg-[#E5E2E8]"></span>
+          <span class="text-[12px] text-text-muted whitespace-nowrap">أو متابعة التسجيل</span>
+          <span class="h-px flex-1 bg-[#E5E2E8]"></span>
+        </div>
+
+        <!-- Email or Phone — floating label pattern -->
+        <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl transition mb-3">
+          <input id="login-identifier" type="text" placeholder=" "
+            class="peer w-full h-full bg-transparent text-h4 text-heading outline-none px-4 pt-5 pb-1.5" />
+          <label for="login-identifier"
+            class="float-label absolute right-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none transition-all duration-150
+                   peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                   peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+            البريد الإلكتروني أو رقم الموبايل
+          </label>
+        </div>
+
+        <!-- Login button -->
+        <button type="button" class="login-method w-full h-[52px] bg-primary hover:bg-primary-hover text-white text-h4 font-medium px-4 rounded-xl transition">
+          تسجيل الدخول
+        </button>
+
+        <!-- Switch to signup -->
+        <p class="text-center text-h5 mt-5 pt-5 border-t border-[#F1ECF4]">
+          <span class="text-text-muted">ليس لديك حساب؟</span>
+          <a href="#" id="login-to-signup" class="text-primary font-medium underline mr-1">إنشاء حساب جديد</a>
+        </p>
+
+        <!-- Help -->
+        <p class="text-center text-[12px] mt-3">
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="text-text-muted hover:text-primary underline transition">هل بحاجة لمساعدة؟</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ VERIFY MODAL — single modal with tabs (code | password) ═══════════ -->
+  <div id="verify-code-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="verify-code-title">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-verify-close></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+      <div class="signup-modal__card relative w-full max-w-lg bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] p-7 sm:p-9">
+
+        <button type="button" data-verify-close aria-label="إغلاق"
+          class="absolute top-4 left-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div class="flex justify-center mb-5 mt-2">
+          <img src="assets/logo 1.png" alt="أكاديميات" class="h-10 w-auto" />
+        </div>
+
+        <h2 id="verify-code-title" class="text-center text-h3 font-semibold text-heading mb-5">تحقّق من هويتك</h2>
+
+        <!-- Tabs (login + email path only; hidden on phone or signup mode) -->
+        <div class="login-method-tabs mb-5" role="tablist" id="verify-tabs">
+          <button type="button" role="tab" data-verify-tab="code" class="login-method-tab is-active" aria-selected="true">الدخول بكود التحقق</button>
+          <button type="button" role="tab" data-verify-tab="password" class="login-method-tab" aria-selected="false">الدخول بكلمة المرور</button>
+        </div>
+
+        <!-- ── Panel: CODE ───────────────────────────────────── -->
+        <div data-verify-panel="code">
+          <p class="text-center text-h5 text-text-muted mb-1 leading-relaxed" id="verify-code-message">
+            أرسلنا كود التحقق المكوّن من 6 أرقام إلى البريد
+            <span id="verify-code-identifier" class="text-heading font-medium" dir="ltr"></span>
+          </p>
+          <p class="text-center mb-6">
+            <button type="button" id="verify-code-change" class="text-[12px] text-primary underline">تغيير البريد</button>
+          </p>
+
+          <!-- 6-digit code input -->
+          <div class="flex items-center justify-center gap-2 mb-2" dir="ltr" id="verify-code-inputs">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="0" aria-label="الرقم 1">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="1" aria-label="الرقم 2">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="2" aria-label="الرقم 3">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="3" aria-label="الرقم 4">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="4" aria-label="الرقم 5">
+            <input type="text" inputmode="numeric" maxlength="1" class="verify-code-digit" data-digit-index="5" aria-label="الرقم 6">
+          </div>
+          <p id="verify-code-error" class="text-center text-[12px] text-error mb-4 hidden">الكود غير صحيح، حاول مرة أخرى.</p>
+
+          <!-- Resend timer -->
+          <p class="text-center text-[13px] text-text-muted mb-6">
+            <span id="verify-resend-timer">إعادة الإرسال خلال <span id="verify-resend-seconds">45</span> ثانية</span>
+            <button type="button" id="verify-resend-btn" class="text-primary underline hidden">إعادة الإرسال</button>
+          </p>
+
+          <button type="button" id="verify-code-submit" class="login-method w-full h-[52px] bg-primary hover:bg-primary-hover text-white text-h4 font-medium px-4 rounded-xl transition flex items-center justify-center gap-2">
+            <span class="verify-btn-label">تحقّق</span>
+            <span class="verify-btn-spinner hidden inline-block w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+          </button>
+        </div>
+
+        <!-- ── Panel: PASSWORD ───────────────────────────────── -->
+        <div data-verify-panel="password" class="hidden">
+          <p class="text-center text-h5 text-text-muted mb-1 leading-relaxed">
+            أدخل كلمة المرور المرتبطة بالبريد
+            <span class="text-heading font-medium" dir="ltr" id="verify-password-identifier"></span>
+          </p>
+          <p class="text-center mb-6">
+            <button type="button" id="verify-password-change" class="text-[12px] text-primary underline">تغيير البريد</button>
+          </p>
+
+          <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl transition mb-2">
+            <input id="verify-password-input" type="password" placeholder=" " autocomplete="current-password"
+              class="peer w-full h-full bg-transparent text-h4 text-heading outline-none px-4 pt-5 pb-1.5" />
+            <label for="verify-password-input"
+              class="float-label absolute right-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none transition-all duration-150
+                     peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                     peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+              كلمة المرور
+            </label>
+          </div>
+          <p class="text-start mb-6">
+            <a href="#" class="text-[12px] text-primary underline">هل نسيت كلمة المرور؟</a>
+          </p>
+
+          <button type="button" id="verify-password-submit" class="login-method w-full h-[52px] bg-primary hover:bg-primary-hover text-white text-h4 font-medium px-4 rounded-xl transition flex items-center justify-center gap-2">
+            <span class="verify-password-btn-label">تسجيل الدخول</span>
+            <span class="verify-password-btn-spinner hidden inline-block w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ONBOARDING MODAL — multi-step survey ═══════════ -->
+  <div id="onboarding-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-onboarding-close></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+      <!-- Decorative stack behind active card -->
+      <div class="card-stack-behind card-stack-behind--2" aria-hidden="true"></div>
+      <div class="card-stack-behind card-stack-behind--1" aria-hidden="true"></div>
+
+      <div class="signup-modal__card relative w-full max-w-2xl min-h-[620px] bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] p-7 sm:p-10 flex flex-col">
+
+        <!-- Close -->
+        <button type="button" data-onboarding-close aria-label="إغلاق"
+          class="absolute top-4 left-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <!-- Progress bar (3 steps) -->
+        <div class="onboarding-progress flex gap-2 mb-7 mt-2" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3">
+          <span class="step h-1 flex-1 rounded-full bg-primary"></span>
+          <span class="step h-1 flex-1 rounded-full bg-[#E5E2E8]"></span>
+          <span class="step h-1 flex-1 rounded-full bg-[#E5E2E8]"></span>
+        </div>
+
+        <!-- Header -->
+        <h2 id="onboarding-title" class="text-h2 font-semibold text-heading mb-1">هيا نبدأ بمعلوماتك</h2>
+        <p class="text-h5 text-text-muted mb-7">سنخصّص تجربتك بناءً على إجاباتك</p>
+
+        <!-- ─── Screen 1/4 ─── -->
+        <div data-screen="1">
+
+          <!-- Q1: Goal (multi-select chips) -->
+          <div class="mb-9">
+            <p class="text-h3 font-medium text-heading mb-5">ما الهدف من إنشاء أكاديميتك؟</p>
+            <div class="flex flex-wrap gap-2" data-chip-group="goal" data-multi="true">
+              <button type="button" class="chip" data-value="share-knowledge" data-selected="true">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>مشاركة خبرتك وتعليم الآخرين</span>
+              </button>
+              <button type="button" class="chip" data-value="sell-courses">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>بيع دورات تدريبية</span>
+              </button>
+              <button type="button" class="chip" data-value="personal-brand">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>بناء علامة شخصية كمدرّب أو خبير</span>
+              </button>
+              <button type="button" class="chip" data-value="train-team">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>تدريب فريق العمل أو الموظفين</span>
+              </button>
+              <button type="button" class="chip" data-value="consulting">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>تقديم استشارات أو برامج تعليمية</span>
+              </button>
+              <button type="button" class="chip" data-value="extra-income">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>إنشاء مصدر دخل إضافي</span>
+              </button>
+              <button type="button" class="chip" data-value="community">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>بناء مجتمع تعليمي</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Academy name field (required, simple placeholder) -->
+          <div class="mb-8">
+            <p class="text-h3 font-medium text-heading mb-5">ما اسم أكاديميتك؟ <span class="text-h5 text-text-muted font-normal">(يجب إدخال الاسم)</span></p>
+            <input id="onboarding-academy-name" type="text" required
+              placeholder="أكاديميتي"
+              class="w-full h-[52px] bg-white border border-[#DFDCE0] focus:border-primary rounded-xl px-4 text-h4 text-heading placeholder:text-text-muted outline-none transition" />
+            <p class="text-h5 text-text-muted mt-2">يمكنك تغييره من لوحة التحكم لاحقاً</p>
+          </div>
+
+        </div>
+
+        <!-- ─── Screen 2/5: Specialization ─── -->
+        <div data-screen="2" class="hidden">
+          <div class="mb-8">
+            <p class="text-h3 font-medium text-heading mb-5">ما هو اختصاص أكاديميتك؟</p>
+            <div class="flex flex-wrap gap-2" data-chip-group="specialization" data-multi="false">
+              <button type="button" class="chip" data-value="entrepreneurship">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>ريادة الأعمال</span>
+              </button>
+              <button type="button" class="chip" data-value="tech">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>التقنية والبرمجة</span>
+              </button>
+              <button type="button" class="chip" data-value="design">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>التصميم والإبداع</span>
+              </button>
+              <button type="button" class="chip" data-value="marketing">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>التسويق وصناعة المحتوى</span>
+              </button>
+              <button type="button" class="chip" data-value="health-personal">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>الصحة والتطوير الشخصي</span>
+              </button>
+              <button type="button" class="chip" data-value="other">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>أخرى</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <p class="text-h3 font-medium text-heading mb-5">ما هو حجم جمهورك الحالي؟</p>
+            <div class="flex flex-wrap gap-2" data-chip-group="audience" data-multi="false">
+              <button type="button" class="chip" data-value="none">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>لا يوجد</span>
+              </button>
+              <button type="button" class="chip" data-value="under-50">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>أقل من 50</span>
+              </button>
+              <button type="button" class="chip" data-value="50-100">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>50 - 100</span>
+              </button>
+              <button type="button" class="chip" data-value="200-1000">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>200 - 1,000</span>
+              </button>
+              <button type="button" class="chip" data-value="1000-plus">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>+1,000</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Screen 3/3: First-month goal + Platform ─── -->
+        <div data-screen="3" class="hidden">
+          <div class="mb-8">
+            <p class="text-h3 font-medium text-heading mb-5">ما هو أهم شيء لك في أول 30 يوم؟</p>
+            <div class="flex flex-wrap gap-2" data-chip-group="firstMonthGoal" data-multi="false">
+              <button type="button" class="chip" data-value="launch-course">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>إطلاق أول دورة بسرعة</span>
+              </button>
+              <button type="button" class="chip" data-value="build-content">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>بناء محتوى أكاديمي</span>
+              </button>
+              <button type="button" class="chip" data-value="first-sale">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>تحقيق أول بيع</span>
+              </button>
+              <button type="button" class="chip" data-value="setup-professional">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>تجهيز الأكاديمية بشكل احترافي</span>
+              </button>
+              <button type="button" class="chip" data-value="try-platform">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>تجربة المنصة فقط</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <p class="text-h3 font-medium text-heading mb-5">ما المنصة التي تستخدمها حاليًا؟</p>
+            <div class="flex flex-wrap gap-2" data-chip-group="currentPlatform" data-multi="false">
+              <button type="button" class="chip" data-value="none">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>لا أستخدم أي منصة حتى الآن</span>
+              </button>
+              <button type="button" class="chip" data-value="mazn">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>Mazn</span>
+              </button>
+              <button type="button" class="chip" data-value="udemy">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>Udemy</span>
+              </button>
+              <button type="button" class="chip" data-value="teachable">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>Teachable</span>
+              </button>
+              <button type="button" class="chip" data-value="kajabi">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>Kajabi</span>
+              </button>
+              <button type="button" class="chip" data-value="youtube">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>YouTube</span>
+              </button>
+              <button type="button" class="chip" data-value="wordpress">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>WordPress</span>
+              </button>
+              <button type="button" class="chip" data-value="other">
+                <span class="chip-icon" aria-hidden="true">
+                  <svg class="chip-plus w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="chip-check w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span>أخرى</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer: Previous + Skip All + Next (pushed to bottom via mt-auto) -->
+        <div class="mt-auto flex items-center justify-between gap-3 pt-5 border-t border-[#F1ECF4]">
+          <div class="flex items-center gap-5">
+            <button type="button" id="onboarding-prev"
+              class="text-h5 text-text-muted flex items-center gap-1 transition hover:text-heading">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+              السابق
+            </button>
+            <button type="button" id="onboarding-skip-all"
+              class="text-h5 text-text-muted hover:text-heading transition underline underline-offset-4 decoration-text-muted/40 hover:decoration-heading/50">
+              تخطي الكل
+            </button>
+          </div>
+          <button type="button" id="onboarding-next" disabled
+            class="h-[44px] bg-primary text-white text-h4 font-medium px-7 rounded-xl transition disabled:bg-[#DFDCE0] disabled:cursor-not-allowed hover:bg-primary-hover">
+            التالي
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TRIAL SUBSCRIPTION MODAL — appears after onboarding finish
+       ═══════════════════════════════════════════════════════ -->
+  <div id="trial-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="trial-title" aria-hidden="true">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-trial-close></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+      <div class="signup-modal__card trial-modal__card relative w-full max-w-4xl bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] overflow-hidden grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
+
+        <!-- ───── RIGHT side (first child in RTL = visually right): main pricing ───── -->
+        <section class="trial-modal__main relative bg-white p-6 sm:p-8 flex flex-col">
+          <!-- Back button (visually top-right in RTL) -->
+          <button type="button" id="trial-back-btn" aria-label="رجوع"
+            class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 6l6 6-6 6"/></svg>
+          </button>
+
+          <!-- Heading -->
+          <h2 id="trial-title" class="text-h2 font-bold text-heading leading-tight mt-2">
+            جرّب خطة <span id="trial-plan-name">الاحترافية</span> مجاناً
+          </h2>
+
+          <!-- Pricing radio cards -->
+          <div class="trial-plans mt-6 space-y-3" role="radiogroup" aria-label="اختر نوع الفوترة">
+            <label class="trial-plan-card trial-plan-card--selected" data-billing="yearly" tabindex="0">
+              <span class="trial-plan-card__radio" aria-hidden="true"></span>
+              <span class="trial-plan-card__body">
+                <span class="trial-plan-card__label">سنوي</span>
+                <span class="trial-plan-card__price-row">
+                  <span class="trial-plan-card__price" id="trial-yearly-price"></span>
+                  <span class="trial-plan-card__sub" id="trial-yearly-sub"></span>
+                </span>
+              </span>
+              <input type="radio" name="trial-billing" value="yearly" class="sr-only" checked>
+            </label>
+
+            <label class="trial-plan-card" data-billing="monthly" tabindex="0">
+              <span class="trial-plan-card__radio" aria-hidden="true"></span>
+              <span class="trial-plan-card__body">
+                <span class="trial-plan-card__label">شهري</span>
+                <span class="trial-plan-card__price-row">
+                  <span class="trial-plan-card__price" id="trial-monthly-price"></span>
+                </span>
+              </span>
+              <input type="radio" name="trial-billing" value="monthly" class="sr-only">
+            </label>
+          </div>
+
+          <!-- Billing summary -->
+          <div class="trial-summary mt-5 rounded-xl border border-border bg-[#FAFAFB] p-4">
+            <div class="flex justify-between items-center gap-3">
+              <span class="text-heading text-h5 font-medium">سيتم الخصم في <span id="trial-due-date">—</span></span>
+              <span id="trial-due-amount" class="text-heading font-semibold">—</span>
+            </div>
+            <div class="border-t border-border my-3"></div>
+            <div class="flex justify-between items-center gap-3">
+              <span class="text-heading font-medium">اليوم</span>
+              <span class="text-success font-semibold">مجاناً</span>
+            </div>
+          </div>
+
+          <!-- Primary CTA -->
+          <button type="button" id="trial-next-btn"
+            class="btn-primary btn-premium h-[52px] mt-5 w-full rounded-xl bg-primary text-white text-h4 font-medium hover:bg-primary-hover transition">
+            التالي
+          </button>
+
+          <!-- Trust rows -->
+          <ul class="mt-5 space-y-2.5 text-text-muted text-h5">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              جرّب 3 أيام مجاناً بدون بطاقة بنكية
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              يمكنك الإلغاء في أي وقت
+            </li>
+          </ul>
+        </section>
+
+        <!-- ───── LEFT side (second child in RTL = visually left): timeline ───── -->
+        <aside class="trial-modal__timeline relative p-8 sm:p-10 hidden md:flex flex-col justify-center">
+          <button type="button" id="trial-skip-btn"
+            class="absolute top-5 left-6 z-10 text-h5 text-text-muted hover:text-heading transition underline underline-offset-4 decoration-text-muted/40 hover:decoration-heading/50">
+            تخطى
+          </button>
+          <ol class="trial-timeline relative">
+            <li class="trial-step">
+              <div class="trial-step__dot trial-step__dot--active">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M5 12l5 5L20 7"/>
+                </svg>
+              </div>
+              <span class="trial-step__badge">اليوم</span>
+              <p class="trial-step__text">ستبدأ فترتك المجانية لمدة 3 أيام</p>
+            </li>
+            <li class="trial-step">
+              <div class="trial-step__dot">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="16" rx="2"/>
+                  <path d="M16 3v4M8 3v4M3 11h18"/>
+                </svg>
+              </div>
+              <span class="trial-step__badge" id="trial-step2-date">—</span>
+              <p class="trial-step__text"><span id="trial-step2-text">سيبدأ اشتراكك — يمكنك الإلغاء في أي وقت</span></p>
+            </li>
+          </ol>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAYMENT MODAL — opens after clicking "التالي" in trial modal
+       ═══════════════════════════════════════════════════════ -->
+  <div id="payment-modal" class="signup-modal fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="payment-title" aria-hidden="true">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm" data-payment-close></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+      <div class="signup-modal__card trial-modal__card payment-modal__card relative w-full max-w-4xl bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] overflow-hidden flex flex-col">
+
+        <div class="grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
+
+        <!-- ───── RIGHT side (visually right in RTL): payment form ───── -->
+        <section class="trial-modal__main relative bg-white p-6 sm:p-8 flex flex-col">
+          <!-- Back button (top-right in RTL) -->
+          <button type="button" id="payment-back-btn" aria-label="رجوع"
+            class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full hover:bg-[#F1ECF4] flex items-center justify-center text-text-muted hover:text-heading transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 6l6 6-6 6"/></svg>
+          </button>
+
+          <!-- Heading -->
+          <h2 id="payment-title" class="text-h2 font-bold text-heading leading-tight mt-2">الدفع</h2>
+
+          <!-- Encryption note + card brand icons -->
+          <div class="flex items-center justify-between gap-3 mt-3">
+            <div class="flex items-center gap-2 text-text-muted text-h5">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="4" y="11" width="16" height="10" rx="2"/>
+                <path d="M8 11V7a4 4 0 1 1 8 0v4"/>
+              </svg>
+              <span>بياناتك مشفرة بالكامل</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="assets/visa.png" alt="Visa" class="payment-brand-icon">
+              <img src="assets/Mastercard.png" alt="Mastercard" class="payment-brand-icon">
+              <img src="assets/express.png" alt="American Express" class="payment-brand-icon">
+              <img src="assets/Mada.png" alt="Mada" class="payment-brand-icon">
+            </div>
+          </div>
+
+          <!-- Card form -->
+          <div class="payment-form mt-5 space-y-3">
+            <!-- Card number -->
+            <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl">
+              <input id="payment-card-number" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="23" placeholder=" "
+                class="peer w-full h-full bg-transparent rounded-xl ps-4 pe-12 pt-5 pb-1.5 text-heading text-h4 tracking-wide outline-none text-left" dir="ltr">
+              <label for="payment-card-number"
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none
+                  peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                  peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+                رقم البطاقة
+              </label>
+              <!-- Card brand icon — kept on right; swaps to brand img on detect -->
+              <div id="payment-card-brand" class="payment-card-brand absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                <svg class="payment-card-brand__default w-5 h-5 text-text-muted" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <rect x="2" y="6" width="20" height="13" rx="2"/>
+                  <path d="M2 11h20"/>
+                </svg>
+                <img class="payment-card-brand__img hidden" src="" alt="">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Expiration -->
+              <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl">
+                <input id="payment-card-exp" type="text" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder=" "
+                  class="peer w-full h-full bg-transparent rounded-xl px-4 pt-5 pb-1.5 text-heading text-h4 tracking-wide outline-none" dir="ltr">
+                <label for="payment-card-exp"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none
+                    peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                    peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+                  تاريخ الانتهاء
+                </label>
+              </div>
+
+              <!-- CVV with info tooltip -->
+              <div class="float-input relative h-[52px] bg-white border border-[#DFDCE0] focus-within:border-primary rounded-xl">
+                <input id="payment-card-cvv" type="text" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder=" "
+                  class="peer w-full h-full bg-transparent rounded-xl px-4 pt-5 pb-1.5 pe-10 text-heading text-h4 tracking-wide outline-none" dir="ltr">
+                <label for="payment-card-cvv"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-h5 text-text-muted pointer-events-none
+                    peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-primary peer-focus:font-medium
+                    peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-medium">
+                  كود التحقق
+                </label>
+
+                <!-- Info button + popover -->
+                <button type="button" id="payment-cvv-info" aria-label="ما هو كود التحقق؟"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full text-text-muted hover:text-primary transition flex items-center justify-center">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                  </svg>
+                </button>
+                <div id="payment-cvv-popover" class="payment-cvv-popover hidden">
+                  <div class="payment-cvv-popover__card">
+                    <span class="payment-cvv-popover__digits">123</span>
+                  </div>
+                  <p class="payment-cvv-popover__text">الكود المكوّن من 3 أرقام في ظهر البطاقة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="button" id="payment-submit-btn"
+            class="btn-primary btn-premium h-[52px] mt-5 w-full rounded-xl bg-primary text-white text-h4 font-medium hover:bg-primary-hover transition">
+            ابدأ تجربتك بـ <span dir="ltr">$1</span>
+          </button>
+
+          <!-- Renewal disclosure -->
+          <p id="payment-renewal-note" class="mt-4 text-h5 text-heading leading-relaxed">—</p>
+        </section>
+
+        <!-- ───── LEFT side: timeline circles + add-on callout ───── -->
+        <aside class="trial-modal__timeline payment-modal__aside relative p-8 sm:p-10 hidden md:flex flex-col">
+          <button type="button" id="payment-skip-btn"
+            class="absolute top-5 left-6 z-10 text-h5 text-text-muted hover:text-heading transition underline underline-offset-4 decoration-text-muted/40 hover:decoration-heading/50">
+            تخطى
+          </button>
+
+          <!-- Timeline circles (kept from trial flow) -->
+          <ol class="trial-timeline relative mt-6 mb-6">
+            <li class="trial-step">
+              <div class="trial-step__dot trial-step__dot--active">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M5 12l5 5L20 7"/>
+                </svg>
+              </div>
+              <span class="trial-step__badge">اليوم</span>
+              <p class="trial-step__text">ستبدأ فترتك المجانية لمدة 3 أيام</p>
+            </li>
+            <li class="trial-step">
+              <div class="trial-step__dot">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="16" rx="2"/>
+                  <path d="M16 3v4M8 3v4M3 11h18"/>
+                </svg>
+              </div>
+              <span class="trial-step__badge" id="payment-step2-date">—</span>
+              <p class="trial-step__text"><span id="payment-step2-text">سيبدأ اشتراكك بـ $1 لأول شهر — يمكنك الإلغاء في أي وقت</span></p>
+            </li>
+          </ol>
+
+        </aside>
+
+        </div><!-- /grid -->
+
+        <!-- ───── Full-width add-on row (bottom of the card) ───── -->
+        <div class="payment-addon-row border-t border-border">
+          <div class="payment-addon payment-addon--wide">
+            <div class="payment-addon__top">
+              <span class="payment-addon__eyebrow-pill">خدمة إضافية — لمرة واحدة</span>
+              <span class="payment-addon__gift">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <polyline points="20 12 20 22 4 22 4 12"/>
+                  <rect x="2" y="7" width="20" height="5"/>
+                  <line x1="12" y1="22" x2="12" y2="7"/>
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                </svg>
+                <span>ستحصل على شهرين مجاناً</span>
+              </span>
+            </div>
+
+            <p class="payment-addon__desc">
+              بناء وتجهيز أكاديميتك كاملة: دومين، هوية بصرية، أوّل كورس، صفحة هبوط، وربط الدفع.
+            </p>
+
+            <div class="payment-addon__bottom-row">
+              <div class="payment-addon__price">$99</div>
+
+              <label class="payment-addon__check" for="payment-addon-checkbox">
+                <input id="payment-addon-checkbox" type="checkbox" class="payment-addon__checkbox">
+                <span class="payment-addon__check-box" aria-hidden="true">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span class="payment-addon__check-label">تأكيد الاشتراك بالخدمة</span>
+              </label>
+
+              <p class="payment-addon__limited-plain">
+                الأماكن محدودة: 10–15 عميل أسبوعياً
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       THANK-YOU MODAL — opens after successful payment
+       ═══════════════════════════════════════════════════════ -->
+  <div id="thankyou-modal" class="signup-modal fixed inset-0 z-[70] hidden" role="dialog" aria-modal="true" aria-labelledby="thankyou-title" aria-hidden="true">
+    <div class="signup-modal__backdrop absolute inset-0 bg-heading/45 backdrop-blur-sm"></div>
+
+    <div class="relative h-full overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+      <div class="signup-modal__card thankyou-modal__card relative w-full max-w-md bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.25)] p-8 sm:p-10 text-center">
+
+        <!-- Lottie confetti backdrop (loops behind the icon) -->
+        <div class="thankyou-modal__confetti" aria-hidden="true">
+          <lottie-player
+            src="https://lottie.host/c4a90f25-3a4b-4f0d-b8b3-7a92b1b5fb2c/JR7iOJWG0t.json"
+            background="transparent"
+            speed="1"
+            autoplay
+            loop
+            style="width: 100%; height: 100%;"
+          ></lottie-player>
+        </div>
+
+        <!-- Green check icon -->
+        <div class="thankyou-modal__check" aria-hidden="true">
+          <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+
+        <h2 id="thankyou-title" class="text-h2 font-bold text-heading mt-5">تهانينا! تم الاشتراك بنجاح</h2>
+        <p class="text-h5 text-text-muted mt-2">سعداء بانضمامك لعائلة أكاديميات</p>
+
+        <p id="thankyou-renewal-note" class="text-h5 text-heading leading-relaxed mt-5">—</p>
+
+        <button type="button" id="thankyou-dashboard-btn"
+          class="btn-primary btn-premium h-[52px] mt-6 w-full rounded-xl bg-primary text-white text-h4 font-medium hover:bg-primary-hover transition">
+          الذهاب إلى لوحة التحكم
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
