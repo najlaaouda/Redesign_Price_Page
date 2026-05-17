@@ -709,10 +709,212 @@
     initTrialModal();
     initPaymentModal();
     initThankYouModal();
+    initB2bModal();
     initInfiniteGrid();
     initCountUp();
     initAcademyMarquee();
     initCompareTabs();
+    initCompareToggle();
+  }
+
+  /* ───────────────────────────────────────────────────
+     B2B MODAL (Form B2b) — Talk-to-Sales
+     Page-like layout with animated grid + 3-step form.
+     Opened via any [data-b2b-trigger] (تواصل معنا + addon CTA).
+     ─────────────────────────────────────────────────── */
+  const b2bState = {
+    step: 1,
+    totalSteps: 3,
+    titles: {
+      1: 'أدخل بياناتـك',
+      2: 'عن مؤسّستـك',
+      3: 'كيف نخدمـك',
+    },
+  };
+
+  function openB2bModal() {
+    const modal = document.getElementById('b2b-modal');
+    if (!modal) return;
+    // Close any other open modal first
+    closeSignupModal();
+    closeLoginModal();
+    closeOnboardingModal();
+    closeTrialModal();
+    closePaymentModal();
+    // Reset to step 1
+    b2bState.step = 1;
+    renderB2bStep();
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    setTimeout(() => modal.querySelector('#b2b-first-name')?.focus(), 80);
+  }
+
+  function closeB2bModal() {
+    const modal = document.getElementById('b2b-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  /* Validate the visible step using native HTML5 checks on inputs */
+  function validateB2bStep(step) {
+    const modal = document.getElementById('b2b-modal');
+    const panel = modal?.querySelector(`[data-b2b-step="${step}"]`);
+    if (!panel) return true;
+    const fields = panel.querySelectorAll('input[required], select[required], textarea[required]');
+    for (const f of fields) {
+      if (!f.checkValidity()) {
+        f.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function renderB2bStep() {
+    const modal = document.getElementById('b2b-modal');
+    if (!modal) return;
+    const step = b2bState.step;
+    const last = step === b2bState.totalSteps;
+
+    // Show only current panel
+    modal.querySelectorAll('[data-b2b-step]').forEach((p) => {
+      const isCurrent = Number(p.dataset.b2bStep) === step;
+      p.classList.toggle('hidden', !isCurrent);
+    });
+
+    // Step title
+    const titleEl = document.getElementById('b2b-step-title');
+    if (titleEl) titleEl.textContent = b2bState.titles[step] || '';
+
+    // Step dots
+    modal.querySelectorAll('.b2b-step-dot').forEach((dot) => {
+      const i = Number(dot.dataset.step);
+      dot.classList.toggle('is-active', i === step);
+      dot.classList.toggle('is-completed', i < step);
+    });
+
+    // Prev button — disabled on step 1
+    const prev = document.getElementById('b2b-prev-btn');
+    if (prev) prev.classList.toggle('is-disabled', step === 1);
+
+    // Next button label/icon — "إرسال الطلب" on last step, hide chevron
+    const label = document.getElementById('b2b-next-label');
+    const icon = document.getElementById('b2b-next-icon');
+    if (label) label.textContent = last ? 'إرسال الطلب' : 'التالي';
+    if (icon) icon.style.display = last ? 'none' : '';
+  }
+
+  function initB2bModal() {
+    const modal = document.getElementById('b2b-modal');
+    if (!modal) return;
+
+    // Open triggers
+    document.querySelectorAll('[data-b2b-trigger]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openB2bModal();
+      });
+    });
+
+    // Close button + outer click
+    modal.querySelectorAll('[data-b2b-close]').forEach((el) => {
+      el.addEventListener('click', closeB2bModal);
+    });
+
+    // ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeB2bModal();
+    });
+
+    // Prev/Next navigation
+    document.getElementById('b2b-prev-btn')?.addEventListener('click', () => {
+      if (b2bState.step > 1) {
+        b2bState.step -= 1;
+        renderB2bStep();
+      }
+    });
+
+    const nextBtn = document.getElementById('b2b-next-btn');
+    nextBtn?.addEventListener('click', () => {
+      if (!validateB2bStep(b2bState.step)) return;
+      if (b2bState.step < b2bState.totalSteps) {
+        b2bState.step += 1;
+        renderB2bStep();
+        // Focus first input on the new step
+        setTimeout(() => {
+          const first = modal.querySelector(`[data-b2b-step="${b2bState.step}"] input, [data-b2b-step="${b2bState.step}"] select, [data-b2b-step="${b2bState.step}"] textarea`);
+          first?.focus();
+        }, 60);
+      } else {
+        // Submit on final step
+        const form = document.getElementById('b2b-form');
+        if (!form) return;
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log('[B2B] Form submitted:', data);
+        nextBtn.classList.add('is-submitted');
+        const label = document.getElementById('b2b-next-label');
+        if (label) label.textContent = 'تم الإرسال ✓';
+        setTimeout(() => {
+          closeB2bModal();
+          form.reset();
+          b2bState.step = 1;
+          renderB2bStep();
+          nextBtn.classList.remove('is-submitted');
+        }, 1500);
+      }
+    });
+
+    // Initial render
+    renderB2bStep();
+
+    // Animate the modal's grid pattern (matches the hero grid behavior)
+    initB2bGrid();
+  }
+
+  /* Animate the modal's SVG <pattern> like the hero's infinite grid */
+  function initB2bGrid() {
+    const pattern = document.getElementById('grid-pattern-b2b');
+    if (!pattern) return;
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    const SPEED = 0.5, TILE = 40, FRAME_MS = 16;
+    let ox = 0, oy = 0;
+    function tick() {
+      ox = (ox + SPEED) % TILE;
+      oy = (oy + SPEED) % TILE;
+      pattern.setAttribute('x', ox.toFixed(2));
+      pattern.setAttribute('y', oy.toFixed(2));
+      setTimeout(tick, FRAME_MS);
+    }
+    tick();
+  }
+
+  /* ───────────────────────────────────────────────────
+     COMPARE TOGGLE — shows/hides the comparison table.
+     Button stays visible; only the table+sticky header collapse.
+     ─────────────────────────────────────────────────── */
+  function initCompareToggle() {
+    const btn = document.getElementById('compare-toggle');
+    const wrapper = document.getElementById('compare-table-wrapper');
+    if (!btn || !wrapper) return;
+    const label = btn.querySelector('.compare-toggle-label');
+    btn.addEventListener('click', () => {
+      const opening = wrapper.classList.contains('hidden');
+      wrapper.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      if (label) label.textContent = opening ? 'إخفاء المقارنة' : 'قارن بين الخطط';
+      if (opening) {
+        // Re-measure header height so tabs strip lands flush below it
+        positionCompareTabs();
+        // Bring the just-opened table into the viewport for context
+        const header = document.querySelector('.compare-sticky-header');
+        if (header) header.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    });
   }
 
   /* ───────────────────────────────────────────────────
@@ -739,16 +941,17 @@
           tb.hidden = (tb.dataset.category !== target);
         });
 
-        // Switching from a tall section (e.g. مميزات المنصة, 20 rows) to a short
-        // one (e.g. التدريب التفاعلي, 3 rows) shrinks the table dramatically,
-        // and the browser keeps the user's scroll position the same — which
-        // dumps them on the next section. Re-anchor on the comparison header.
+        // Always re-anchor on the comparison header after switching tabs.
+        // Without this, switching from a tall section (مميزات المنصة, 20 rows)
+        // to a short one (التدريب التفاعلي, 3 rows) shrinks the table and
+        // dumps the user onto the next section. We scroll the header to top
+        // of viewport so the new tab content is always immediately visible.
         if (stickyHeader) {
           const rect = stickyHeader.getBoundingClientRect();
-          // Only re-anchor if the user is already scrolled past or near the top
-          // of the comparison block. Don't yank them up if they haven't reached
-          // the table yet.
-          if (rect.top < 1) {
+          // Skip the scroll only if the user hasn't reached #compare yet at all
+          // (header is well below the viewport top — they're still browsing
+          // upstream and clicked a tab via keyboard, unlikely but possible).
+          if (rect.top < window.innerHeight * 0.6) {
             stickyHeader.scrollIntoView({ block: 'start', behavior: 'smooth' });
           }
         }
@@ -820,7 +1023,7 @@
       desc: 'منصة فنية متخصصة في تعليم فنون الرسم من الأساسيات حتى الاحتراف بأساليب إبداعية تناسب جميع المستويات.' },
     { name: 'Owais',                        url: 'https://moxowais.acadimiat.com/',                              image: 'Owais.png',
       desc: 'منصة تعليمية واستشارية متخصصة في أسرار صناعة المحتوى، الخوارزميات، وتحقيق الانتشار العضوي دون الحاجة للإعلانات.' },
-    { name: "Samara's Keto Life",           url: 'https://samarasketolife.acadimiat.com/',                       image: "Samara's Keto Life.png",
+    { name: "Samara's Keto Life",           url: 'https://samarasketolife.acadimiat.com/',                       image: "samara.png",
       desc: 'منصة صحية وتدريبية متخصصة في التغذية العلاجية ونظام الكيتو دايت والصيام المتقطع، تقدم برامج عملية لاستعادة الصحة والنشاط.' },
     { name: 'FBA Courses',                  url: 'https://fbaacademies.acadimiat.com/',                          image: 'FBA Courses.png',
       desc: 'منصة رياضية إلكترونية متخصصة في تدريبات عملية لتطوير مهارات كرة القدم — التسديد والمهارات الاستعراضية — بأساليب احترافية ومبسطة.' },
@@ -877,7 +1080,7 @@
       // Encode for safe URL — Arabic filenames + spaces need %-encoding
       const src = 'assets/' + encodeURIComponent(a.image || 'sahel.png');
       return (
-        '<a class="academy-card" href="' + a.url + '" target="_blank" rel="noopener noreferrer" aria-label="' + a.name + '">' +
+        '<a class="swiper-slide academy-card" href="' + a.url + '" target="_blank" rel="noopener noreferrer" aria-label="' + a.name + '">' +
           '<div class="academy-card__browser">' +
             '<div class="academy-card__chrome">' +
               '<div class="academy-card__dots">' +
@@ -893,32 +1096,28 @@
       );
     };
 
-    // Render the list TWICE so the keyframe shift of exactly one-copy-width
-    // brings the duplicate's first card to where the original's first card
-    // started → perfectly seamless loop, no visible restart point.
-    const html = ACADEMIES.map(buildCard).join('');
-    track.innerHTML = html + html;
+    // Render once — Swiper's `loop: true` handles infinite seamless cloning
+    track.innerHTML = ACADEMIES.map(buildCard).join('');
 
-    // Compute the exact width of one copy (incl. the trailing gap to the next
-    // copy) and pin it as a CSS var. The keyframe uses translate3d(var(--copy-shift))
-    // so the animation ends with duplicate-card-1 aligned over original-card-1.
-    const recomputeCopyShift = () => {
-      const cards = track.querySelectorAll('.academy-card');
-      const half = cards.length / 2;
-      if (!half) return;
-      const gapPx = parseFloat(getComputedStyle(track).columnGap) || 0;
-      let width = 0;
-      for (let i = 0; i < half; i++) {
-        width += cards[i].getBoundingClientRect().width + gapPx;
-      }
-      track.style.setProperty('--copy-shift', `-${width}px`);
-    };
-
-    // Initial measurement — wait for layout to settle (images can change card height
-    // but width is fixed by CSS, so a single rAF / load is enough)
-    requestAnimationFrame(recomputeCopyShift);
-    window.addEventListener('load', recomputeCopyShift);
-    window.addEventListener('resize', recomputeCopyShift);
+    // Continuous marquee config: delay:0 + large speed + freeMode → cards drift
+    // smoothly forever (instead of snapping slide-by-slide). pauseOnMouseEnter
+    // handles hover; allowTouchMove keeps mobile swipe working.
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('.academy-swiper', {
+      loop: true,
+      loopAdditionalSlides: 5,
+      slidesPerView: 'auto',
+      spaceBetween: 24,
+      freeMode: true,
+      speed: 5000,
+      allowTouchMove: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+    });
   }
 
   /* ───────────────────────────────────────────────────

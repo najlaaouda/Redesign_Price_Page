@@ -67,7 +67,7 @@ html {
 }
 
 body {
-  font-family: '29LT Bukra', 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Readex Pro', '29LT Bukra', 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -1097,47 +1097,129 @@ summary:focus-visible {
 .grid-layer--base { opacity: 0.20; }
 
 /* ═══════════════════════════════════════════════════════
-   ACADEMY MARQUEE — seamless auto-scrolling row
-   - JS duplicates the 27-card list so the keyframe shift (-50%) lands
-     exactly on the start of the duplicate, producing a gap-free loop
-   - Pauses on hover; respects prefers-reduced-motion
-   - Caption (name + description) sits BELOW the browser mockup
+   ACADEMY MARQUEE — powered by Swiper.js (free-mode autoplay)
+   - swiper-bundle handles loop/clones, autoplay, hover-pause, nav
+   - We only style: the wrap + nav buttons + cards + edge mask
    ═══════════════════════════════════════════════════════ */
-.academy-marquee {
+.academy-marquee-wrap {
+  position: relative;
+}
+.academy-swiper {
   overflow: hidden;
-  padding-block: 8px 16px;
-  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 6%, #000 94%, transparent 100%);
-          mask-image: linear-gradient(to left, transparent 0, #000 6%, #000 94%, transparent 100%);
+  padding-block: 12px 20px;
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 5%, #000 95%, transparent 100%);
+          mask-image: linear-gradient(to left, transparent 0, #000 5%, #000 95%, transparent 100%);
 }
-.academy-track {
-  --copy-shift: -9288px;  /* JS overrides on init + resize with the exact width of one copy */
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 24px;
-  width: max-content;
-  animation: academy-marquee-scroll 120s linear infinite;
-  will-change: transform;
+/* Critical Swiper overrides for marquee feel */
+.academy-swiper .swiper-wrapper {
+  /* Linear easing makes continuous marquee scroll feel constant, not eased */
+  transition-timing-function: linear !important;
 }
-.academy-marquee:hover .academy-track {
-  animation-play-state: paused;
+.academy-swiper .swiper-slide {
+  width: 320px;   /* slidesPerView: 'auto' uses each slide's CSS width */
+  height: auto;
 }
-/* True infinite loop: keyframe shifts by EXACTLY one copy's width (cards
-   + their internal gaps + the trailing gap to the next copy). When the
-   animation cycle restarts at translate(0), the rendered content is
-   visually identical → no flicker, no jump, no empty space. */
-@keyframes academy-marquee-scroll {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(var(--copy-shift), 0, 0); }
+@media (max-width: 768px) {
+  .academy-swiper .swiper-slide { width: 260px; }
+  .academy-swiper { padding-block: 8px 14px; }
 }
 
+/* Prev/Next nav removed — marquee relies on autoplay + hover-pause + touch swipe */
+
+/* ═══════════════════════════════════════════════════════
+   ADD-ON CARD — Thinkific-inspired wide block, brand colors
+   (white bg + primary purple border + floating "إضافات" label)
+   ═══════════════════════════════════════════════════════ */
+.addon-card {
+  position: relative;
+  background: #F9F7FB;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 24px;
+  padding: 36px 28px 32px;
+}
+@media (min-width: 1024px) {
+  .addon-card { padding: 48px 44px 44px; }
+}
+.addon-card__label {
+  position: absolute;
+  top: 0;
+  right: 32px;                /* RTL: visually right (start) */
+  transform: translateY(-50%);
+  background: #fff;           /* matches new section bg (white) so it punches through the card border */
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 12px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .addon-card__label { right: 20px; font-size: 12px; }
+}
+
+.addon-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+.addon-card__cta:hover { filter: brightness(0.95); }
+.addon-card__cta:active { filter: brightness(0.88); }
+
+/* 2-column features grid on desktop, 1-column on mobile */
+.addon-card__features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .addon-card__features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.addon-card__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-heading);
+  font-weight: 400;
+}
+.addon-card__features li svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-primary);
+}
+@media (max-width: 768px) {
+  .addon-card__features li { font-size: 13px; }
+}
+/* Swiper now owns .academy-track (.swiper-wrapper). No custom layout needed. */
+
 .academy-card {
-  flex: 0 0 auto;
-  width: 320px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   text-decoration: none;
   color: inherit;
+  /* Subtle lift on hover — independent of Swiper's wrapper transform */
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+.academy-card:hover {
+  transform: translateY(-8px);
 }
 .academy-card__browser {
   background: #fff;
@@ -1366,6 +1448,17 @@ summary:focus-visible {
    (no outer border, no border-radius, no featured highlight)
    ============================================================ */
 
+/* Toggle pill button — shows/hides the comparison table */
+.compare-toggle-btn {
+  cursor: pointer;
+  transition: filter 0.15s ease, border-color 0.15s ease;
+}
+.compare-toggle-btn:hover { filter: brightness(0.97); border-color: var(--color-primary); }
+.compare-toggle-btn:active { filter: brightness(0.93); }
+.compare-toggle-chevron { transition: transform 0.25s ease; }
+.compare-toggle-btn[aria-expanded="true"] .compare-toggle-chevron { transform: rotate(-180deg); }
+@media (prefers-reduced-motion: reduce) { .compare-toggle-chevron { transition: none; } }
+
 /* (1) Pill tabs — sticks below the plan header on scroll, flush against it */
 .compare-tabs-wrap {
   position: sticky;
@@ -1503,15 +1596,16 @@ summary:focus-visible {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
-  color: var(--color-heading);
+  color: #000;
 }
 .compare-table .compare-col--label { width: 38%; }
 .compare-table tbody tr { border-top: 1px solid var(--color-border); }
 .compare-table tbody tr:first-child { border-top: 0; }
 .compare-table th[scope="row"] {
   text-align: start;
+  font-size: 15px;
   font-weight: 500;
-  color: var(--color-heading);
+  color: #000;
   padding: 16px 22px;
 }
 
@@ -1575,11 +1669,13 @@ summary:focus-visible {
 }
 .compare-table td {
   text-align: center;
+  font-size: 13px;
   padding: 16px 14px;
-  font-weight: 500;
+  font-weight: 400;
+  color: #000;
 }
-.compare-table td.cmp-v { color: var(--color-primary); font-size: 18px; line-height: 1; }
-.compare-table td.cmp-x { color: rgba(60, 50, 70, 0.28); font-size: 16px; line-height: 1; }
+.compare-table td.cmp-v { color: var(--color-primary); font-size: 16px; line-height: 1; }
+.compare-table td.cmp-x { color: rgba(60, 50, 70, 0.28); font-size: 14px; line-height: 1; }
 
 /* (4) Mobile */
 @media (max-width: 768px) {
@@ -1596,6 +1692,171 @@ summary:focus-visible {
   .compare-table th[scope="row"] { padding: 12px 14px; }
   .compare-table td { padding: 12px 8px; }
   .compare-table .compare-col--label { width: 36%; }
+}
+
+/* ============================================================
+   B2B MODAL — Form B2b (Talk-to-Sales)
+   Page-like layout with animated grid backdrop + 3-step form.
+   ============================================================ */
+
+/* Overall modal — light tint matching the hero */
+.b2b-modal {
+  background: #FCFBFD;
+}
+
+/* Animated grid backdrop — mirrors .hero-bg with a softer fade */
+.b2b-modal__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  /* Soft vertical fade so the grid is densest near the top
+     and dissolves before the form card sits centered. */
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.4) 65%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.4) 65%, transparent 100%);
+}
+.b2b-modal__bg .grid-layer { opacity: 0.18; }
+
+.b2b-modal__scroll {
+  z-index: 1;
+}
+
+/* Form card entrance animation */
+.b2b-modal__card {
+  animation: b2b-card-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes b2b-card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .b2b-modal__card { animation: none; }
+}
+
+/* Step indicator dots — active dot is wider (pill).
+   NOTE: We compound the selectors with `.b2b-modal` to outrank
+   Tailwind CDN preflight (CLAUDE.md "Tailwind preflight specificity" gotcha). */
+.b2b-step-indicator .b2b-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: #E0DCE4;
+}
+.b2b-step-indicator .b2b-step-dot.is-active {
+  width: 24px;
+  background-color: var(--color-primary);
+}
+.b2b-step-indicator .b2b-step-dot.is-completed {
+  width: 8px;
+  background-color: var(--color-primary);
+  opacity: 0.55;
+}
+
+/* Hide prev arrow on step 1 (handled in JS via .is-disabled) */
+#b2b-prev-btn.is-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Step panel fade between steps */
+[data-b2b-step] {
+  animation: b2b-step-in 0.28s ease-out both;
+}
+[data-b2b-step].hidden { display: none; }
+@keyframes b2b-step-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-b2b-step] { animation: none; }
+}
+
+/* Field block */
+.b2b-field { display: block; }
+.b2b-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-bottom: 6px;
+}
+
+/* Generic input — text, email, tel, url, select, textarea */
+.b2b-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  background: #fff;
+  border: 1.5px solid #DFDCE0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-heading);
+  font-family: inherit;
+  line-height: 1.4;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.b2b-input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  opacity: 0.7;
+}
+.b2b-input:hover { border-color: #C9C3D0; }
+.b2b-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(107, 58, 140, 0.14);
+}
+.b2b-textarea {
+  height: auto;
+  min-height: 110px;
+  padding: 11px 13px;
+  resize: vertical;
+}
+
+/* Native <select> arrow → custom chevron via SVG */
+select.b2b-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C7282' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 13px center;
+  background-size: 16px;
+  padding-inline-end: 13px;
+  padding-inline-start: 38px;
+  cursor: pointer;
+}
+
+/* Phone — fixed country chip + flexible number input */
+.b2b-phone-prefix {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  padding: 0 12px;
+  background: #F5F4F6;
+  border: 1.5px solid #DFDCE0;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--color-heading);
+  font-weight: 600;
+  direction: ltr;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Submit confirmation state */
+#b2b-next-btn.is-submitted {
+  background: #16a34a;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .b2b-modal__card { padding: 22px 18px; border-radius: 22px; }
+  #b2b-step-title { font-size: 18px; }
 }
 
 /* ─── Print-friendly (for users who print pricing pages) ─── */

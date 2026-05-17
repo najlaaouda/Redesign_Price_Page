@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا — أكاديميات</title>
+  <meta name="description"
+    content="تواصل مع فريق مبيعات أكاديميات لتجهيز عرض مخصّص يناسب احتياجات مؤسّستك التدريبية." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6B3A8C',
+            'primary-hover': '#5A2F77',
+            'primary-soft': '#F4EDF8',
+            secondary: '#E056A7',
+            'secondary-soft': '#FDF0F7',
+            heading: '#311A40',
+            'text-muted': '#7C7282',
+            border: '#DFDCE0',
+            warning: '#F2C94C',
+            success: '#1F8A4C',
+            error: '#D23030',
+            info: '#1565C0',
+          },
+          fontFamily: {
+            sans: ['"Readex Pro"', '"29LT Bukra"', '"IBM Plex Sans Arabic"', 'system-ui', 'sans-serif'],
+          },
+          fontSize: {
+            'h1': ['32px', { lineHeight: '1.25', fontWeight: '700' }],
+            'h2': ['24px', { lineHeight: '1.35', fontWeight: '500' }],
+            'h3': ['20px', { lineHeight: '1.4', fontWeight: '400' }],
+            'h4': ['16px', { lineHeight: '1.5', fontWeight: '400' }],
+            'h5': ['14px', { lineHeight: '1.5', fontWeight: '400' }],
+          },
+          maxWidth: { 'container': '1200px' },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="font-sans bg-white text-heading antialiased">
+
+  <!-- SVG SYMBOLS — reused logo mark -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="acad-logo-mark" viewBox="0 0 32 32">
+        <path d="M16 4 L30 12 L16 20 L2 12 Z" fill="currentColor" />
+        <path d="M6 14.5 L6 21 Q 6 26 16 26 Q 26 26 26 21 L 26 14.5" fill="none" stroke="currentColor"
+          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />
+        <circle cx="29" cy="13" r="1.5" fill="currentColor" />
+        <path d="M29 13 L 29 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ═══════════ Top Nav (same as the pricing page) ═══════════ -->
+  <header class="absolute top-0 left-0 right-0 z-40">
+    <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+      <a href="index.html" class="flex items-center gap-2 group flex-shrink-0">
+        <img src="assets/logo 1.png" alt="أكاديميات" class="brand-logo h-9 w-auto transition" />
+      </a>
+
+      <nav
+        class="nav-pill hidden lg:flex items-center gap-1 bg-white/70 backdrop-blur border border-border/70 rounded-full px-2 py-1.5 shadow-sm">
+        <a href="index.html"
+          class="nav-link flex items-center gap-1 px-4 py-1.5 text-h5 text-heading rounded-full transition">
+          المنصة
+          <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+        <a href="index.html" class="nav-link px-4 py-1.5 text-h5 text-heading rounded-full transition">الأسعار</a>
+        <a href="index.html#faq"
+          class="nav-link flex items-center gap-1 px-4 py-1.5 text-h5 text-heading rounded-full transition">مجتمع
+          أكاديميات</a>
+      </nav>
+
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a href="index.html#pricing-cards"
+          class="inline-flex items-center bg-primary text-white text-h4 font-medium px-5 py-2.5 rounded-full shadow-sm btn-premium">
+          ابدأ تجربتك المجانية
+        </a>
+        <a href="index.html"
+          class="hidden sm:inline-flex items-center text-h4 font-medium text-heading px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-border/70 hover:bg-white shadow-sm btn-premium">
+          دخول
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════ CONTACT HERO + FORM ═══════════ -->
+  <main class="contact-hero relative isolate overflow-hidden bg-white min-h-screen">
+
+    <!-- Animated grid backdrop (matches index hero) -->
+    <div id="contact-grid-wrap" class="hero-bg" aria-hidden="true">
+      <svg class="grid-layer grid-layer--base" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid-pattern-contact" width="40" height="40" patternUnits="userSpaceOnUse" x="0" y="0">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(107, 58, 140, 0.75)" stroke-width="1" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-pattern-contact)" />
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-16">
+
+      <!-- Title -->
+      <h1
+        class="text-center text-[32px] sm:text-[44px] lg:text-[54px] font-bold text-heading leading-[1.2] tracking-tight mb-4">
+        حلول تدريب مرنة تناسب <span class="popular-text-gradient">الشركات والفرق الكبيرة</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-center text-h4 text-text-muted leading-relaxed max-w-2xl mx-auto mb-10 lg:mb-12">
+        أخبرنا عن احتياجات مؤسّستك، وسيتواصل معك أحد خبرائنا خلال يوم عمل واحد لتجهيز عرض مخصّص يناسب حجم فريقك وأهدافك
+        التدريبية.
+      </p>
+
+
+
+      <!-- Form card -->
+      <div
+        class="b2b-modal__card bg-white rounded-3xl shadow-[0_24px_64px_-12px_rgba(49,26,64,0.18)] p-6 sm:p-8 lg:p-10 max-w-2xl mx-auto">
+
+        <!-- Card header: back + step title + step indicator -->
+        <div class="flex items-center justify-between gap-4 mb-6 pb-5 border-b border-border">
+          <div class="flex items-center gap-3">
+            <button type="button" id="b2b-prev-btn" aria-label="رجوع"
+              class="w-9 h-9 rounded-full border border-border hover:bg-[#F1ECF4] flex items-center justify-center text-heading transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+            <h3 id="b2b-step-title" class="text-h3 font-bold text-heading">أدخل بياناتـك</h3>
+          </div>
+          <div class="b2b-step-indicator flex items-center gap-1.5" aria-label="خطوة من 3">
+            <span class="b2b-step-dot is-active" data-step="1"></span>
+            <span class="b2b-step-dot" data-step="2"></span>
+            <span class="b2b-step-dot" data-step="3"></span>
+          </div>
+        </div>
+
+        <form id="b2b-form" name="b2b-form" novalidate>
+
+          <!-- STEP 1: Personal details -->
+          <div data-b2b-step="1" class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="b2b-field">
+                <label for="b2b-first-name" class="b2b-label">الاسم الأول <span class="text-primary">*</span></label>
+                <input id="b2b-first-name" name="firstName" type="text" required class="b2b-input">
+              </div>
+              <div class="b2b-field">
+                <label for="b2b-last-name" class="b2b-label">الاسم الأخير <span class="text-primary">*</span></label>
+                <input id="b2b-last-name" name="lastName" type="text" required class="b2b-input">
+              </div>
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-email" class="b2b-label">البريد الإلكتروني <span class="text-primary">*</span></label>
+              <input id="b2b-email" name="email" type="email" required class="b2b-input" dir="ltr">
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-phone" class="b2b-label">رقم الهاتف <span class="text-primary">*</span></label>
+              <div class="flex items-stretch gap-2">
+                <span class="b2b-phone-prefix" aria-label="رمز المملكة العربية السعودية">🇸🇦 +966</span>
+                <input id="b2b-phone" name="phone" type="tel" dir="ltr" placeholder="011 234 5678" required
+                  class="b2b-input flex-1">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Company info -->
+          <div data-b2b-step="2" class="space-y-4 hidden">
+            <div class="b2b-field">
+              <label for="b2b-company" class="b2b-label">اسم الشركة <span class="text-primary">*</span></label>
+              <input id="b2b-company" name="companyName" type="text" required class="b2b-input">
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-website" class="b2b-label">الموقع الإلكتروني</label>
+              <input id="b2b-website" name="website" type="url" class="b2b-input" dir="ltr" placeholder="https://">
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-size" class="b2b-label">حجم الشركة <span class="text-primary">*</span></label>
+              <select id="b2b-size" name="companySize" required class="b2b-input">
+                <option value="" disabled selected>اختر حجم الشركة</option>
+                <option value="1-10">1–10 موظفين</option>
+                <option value="11-50">11–50 موظفاً</option>
+                <option value="51-200">51–200 موظفاً</option>
+                <option value="201-500">201–500 موظفاً</option>
+                <option value="500+">أكثر من 500</option>
+              </select>
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-type" class="b2b-label">نوع الشركة <span class="text-primary">*</span></label>
+              <select id="b2b-type" name="companyType" required class="b2b-input">
+                <option value="" disabled selected>اختر نوع الشركة</option>
+                <option value="education">مؤسّسة تعليمية</option>
+                <option value="corporate">شركة قطاع خاص</option>
+                <option value="government">جهة حكومية</option>
+                <option value="ngo">منظّمة غير ربحية</option>
+                <option value="other">أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 3: Needs & source -->
+          <div data-b2b-step="3" class="space-y-4 hidden">
+            <div class="b2b-field">
+              <label for="b2b-source" class="b2b-label">كيف سمعت عنا</label>
+              <select id="b2b-source" name="source" class="b2b-input">
+                <option value="recommendation" selected>توصية من أحد الأشخاص</option>
+                <option value="search">محرّكات البحث</option>
+                <option value="social">منصّات التواصل الاجتماعي</option>
+                <option value="event">فعالية أو مؤتمر</option>
+                <option value="ads">إعلانات</option>
+                <option value="other">أخرى</option>
+              </select>
+            </div>
+            <div class="b2b-field">
+              <label for="b2b-needs" class="b2b-label">أخبرنا عن احتياجاتك</label>
+              <textarea id="b2b-needs" name="needs" rows="5" class="b2b-input b2b-textarea"
+                placeholder="عدد المتدربين، نوع الدورات، الميزات المطلوبة..."></textarea>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="flex items-center justify-end gap-3 mt-7 pt-5 border-t border-border">
+            <button type="button" id="b2b-next-btn"
+              class="btn-premium bg-primary text-white text-h4 font-medium px-7 h-[48px] rounded-xl hover:bg-primary-hover transition inline-flex items-center gap-2">
+              <span id="b2b-next-label">التالي</span>
+              <svg id="b2b-next-icon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+          </div>
+
+          <p class="text-[11px] text-text-muted/80 leading-relaxed pt-3 text-center">
+            بإرسالك هذا الطلب فأنت توافق على <a href="#"
+              class="text-primary underline decoration-from-font underline-offset-2 hover:text-primary-hover">سياسة
+              الخصوصية</a> وتلقّي تواصل من فريق المبيعات.
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Page-local JS: multi-step form + animated grid + count-up -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Multi-step form ── */
+      const state = {
+        step: 1,
+        totalSteps: 3,
+        titles: { 1: 'أدخل بياناتـك', 2: 'عن مؤسّستـك', 3: 'كيف نخدمـك' },
+      };
+
+      function validateStep(step) {
+        const panel = document.querySelector(`[data-b2b-step="${step}"]`);
+        if (!panel) return true;
+        const fields = panel.querySelectorAll('input[required], select[required], textarea[required]');
+        for (const f of fields) {
+          if (!f.checkValidity()) { f.reportValidity(); return false; }
+        }
+        return true;
+      }
+
+      function renderStep() {
+        const step = state.step;
+        const last = step === state.totalSteps;
+        document.querySelectorAll('[data-b2b-step]').forEach((p) => {
+          p.classList.toggle('hidden', Number(p.dataset.b2bStep) !== step);
+        });
+        const titleEl = document.getElementById('b2b-step-title');
+        if (titleEl) titleEl.textContent = state.titles[step] || '';
+        document.querySelectorAll('.b2b-step-dot').forEach((dot) => {
+          const i = Number(dot.dataset.step);
+          dot.classList.toggle('is-active', i === step);
+          dot.classList.toggle('is-completed', i < step);
+        });
+        const prev = document.getElementById('b2b-prev-btn');
+        if (prev) prev.classList.toggle('is-disabled', step === 1);
+        const label = document.getElementById('b2b-next-label');
+        const icon = document.getElementById('b2b-next-icon');
+        if (label) label.textContent = last ? 'إرسال الطلب' : 'التالي';
+        if (icon) icon.style.display = last ? 'none' : '';
+      }
+
+      document.getElementById('b2b-prev-btn')?.addEventListener('click', () => {
+        if (state.step > 1) { state.step -= 1; renderStep(); }
+      });
+
+      const nextBtn = document.getElementById('b2b-next-btn');
+      nextBtn?.addEventListener('click', () => {
+        if (!validateStep(state.step)) return;
+        if (state.step < state.totalSteps) {
+          state.step += 1;
+          renderStep();
+          setTimeout(() => {
+            const first = document.querySelector(`[data-b2b-step="${state.step}"] input, [data-b2b-step="${state.step}"] select, [data-b2b-step="${state.step}"] textarea`);
+            first?.focus();
+          }, 60);
+        } else {
+          const form = document.getElementById('b2b-form');
+          const data = Object.fromEntries(new FormData(form).entries());
+          console.log('[B2B] Form submitted:', data);
+          nextBtn.classList.add('is-submitted');
+          const label = document.getElementById('b2b-next-label');
+          if (label) label.textContent = 'تم الإرسال ✓';
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1500);
+        }
+      });
+
+      renderStep();
+
+      /* ── Animated grid (same loop as the hero) ── */
+      (function initGrid() {
+        const pattern = document.getElementById('grid-pattern-contact');
+        if (!pattern) return;
+        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) return;
+        const SPEED = 0.5, TILE = 40, FRAME_MS = 16;
+        let ox = 0, oy = 0;
+        function tick() {
+          ox = (ox + SPEED) % TILE;
+          oy = (oy + SPEED) % TILE;
+          pattern.setAttribute('x', ox.toFixed(2));
+          pattern.setAttribute('y', oy.toFixed(2));
+          setTimeout(tick, FRAME_MS);
+        }
+        tick();
+      })();
+
+      /* ── Count-up (matches the pricing page stat animation) ── */
+      (function initCountUp() {
+        const els = Array.from(document.querySelectorAll('.count-up'));
+        if (!els.length) return;
+        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+          els.forEach(el => el.textContent = el.dataset.countTo || '0');
+          return;
+        }
+        // NOTE: setTimeout — rAF is throttled inside the MCP preview headless browser
+        const animate = (el) => {
+          const target = Number(el.dataset.countTo) || 0;
+          const duration = 1800;
+          const start = Date.now();
+          function frame() {
+            const t = Math.min(1, (Date.now() - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+            el.textContent = Math.round(eased * target).toString();
+            if (t < 1) setTimeout(frame, 16);
+          }
+          frame();
+        };
+        // Animate all on load (form is above the fold)
+        els.forEach(animate);
+      })();
+    })();
+  </script>
+</body>
+
+</html>
