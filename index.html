@@ -1020,8 +1020,8 @@
     <div class="max-w-container mx-auto px-4 sm:px-6 lg:px-8 space-y-6 lg:space-y-8">
 
       <!-- ── BLOCK 1: Add-on (Thinkific-inspired wide card) ── -->
-      <article class="addon-card">
-        <span class="addon-card__label">إضافات</span>
+      <article class="addon-card relative bg-[#F9F7FB] border-[1.5px] border-primary rounded-[24px] p-9 lg:p-12">
+        <span class="addon-card__label absolute -top-[14px] right-8 bg-white text-primary text-[13px] font-bold px-3 whitespace-nowrap">إضافات</span>
 
         <div class="grid md:grid-cols-[1fr_1.25fr] gap-8 lg:gap-14 items-start pt-2">
           <!-- Right (RTL start): heading + description + CTA -->
@@ -1032,72 +1032,45 @@
             <p class="text-h4 text-black font-normal leading-relaxed mb-7">
               متاحة لمشتركي الباقات الأساسية (الانطلاقة، الاحترافية، المتقدمة)
             </p>
-            <a href="contact.html" class="addon-card__cta">احجز موعد </a>
+            <a href="contact.html" class="addon-card__cta inline-flex items-center justify-center bg-primary text-white text-h4 font-semibold px-7 py-3 rounded-xl hover:bg-primary-hover transition no-underline">احجز موعد</a>
           </div>
 
-          <!-- Left (RTL end): features list with orange checkmarks -->
-          <ul class="addon-card__features">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+          <!-- Left (RTL end): features list with purple checkmarks -->
+          <ul class="addon-card__features grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-3.5 list-none p-0 m-0">
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>استبانات لقياس مستوى رضا المستفيدين</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>دعم اللغتين العربية والإنجليزية</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>نظام تذاكر لاستقبال الشكاوى والمقترحات</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>فصول افتراضية مدمجة داخل المنصة</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>نظام التحقق الآمن من هوية المستخدمين</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>نظام تتبع تقدم المتدربين ونسب الإنجاز</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>أدوات لكشف الاقتباس ومنع الغش في التكليفات</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>دعم تسهيلات الوصول لذوي الإعاقة</span>
             </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
+            <li class="flex items-start gap-3 text-h5 text-heading">
+              <svg width="20" height="20" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
               <span>إنشاء قوالب برامج تدريبية متنوعة</span>
             </li>
           </ul>
@@ -1107,8 +1080,8 @@
       <!-- Tagline below the add-on: pitch + inline "تواصل معنا" link -->
       <p class="text-center text-h4 text-heading leading-relaxed pt-2">
         أكاديميات تقدم حلولاً مخصصة للشركات.
-        <a href="contact.html" class="popular-text-gradient font-semibold underline underline-offset-4 transition"
-          style="text-decoration-color: var(--color-primary);">تواصل معنا</a>
+        <a href="contact.html" class="inline-block font-semibold no-underline transition"
+          style="border-bottom: 2px solid #6B3A8C; padding-bottom: 1px;"><span class="popular-text-gradient">تواصل معنا</span></a>
         للحصول على عرض سعر حسب احتياجك.
       </p>
 
